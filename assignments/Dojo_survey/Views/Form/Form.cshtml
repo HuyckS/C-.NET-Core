@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Main</title>
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+@model Dojo_survey.Models.Survey
+
+<body>
+    <div class="form-content">
+        <h1>Coding Dojo Survey Form</h1>
+        <form action="/result" method="post">
+            <div class="row">
+                <label for="Name">Your Name:</label>
+                <input type="text" name="Name" id="Name" />
+                <span asp-validation-for="Name" class="validation"></span>
+            </div>
+            <div class="row">
+                <label for="Location">Dojo Location:</label>
+                <select id="Location" name="Location">
+                    <option value=""></option>
+                    <option value="Seattle">Seattle</option>
+                    <option value="Boise">Boise</option>
+                    <option value="San Jose">San Jose</option>
+                    <option value="Los Angeles">Los Angeles</option>
+                </select>
+                <span asp-validation-for="Location" class="validation"></span>
+            </div>
+            <div class="row">
+                <label for="Language">Language:</label>
+                <select id="Language" name="Language">
+                    <option value=""></option>
+                    <option value="C#">C#</option>
+                    <option value="Python">Python</option>
+                    <option value="JavaScript">JavaScript</option>
+                </select>
+                <span asp-validation-for="Language" class="validation"></span>
+            </div>
+            <div class="row">
+                <label for="Comment">Comment (optional):</label>
+                <textarea name="Comment" id="Comment" cols="30" rows="10" placeholder="Your thoughts here..."></textarea>
+                <span asp-validation-for="Comment" class="validation"></span>
+            </div>
+            <div class="row">
+                <input type="submit" />
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

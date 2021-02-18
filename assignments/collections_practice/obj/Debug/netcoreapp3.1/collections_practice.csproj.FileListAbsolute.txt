@@ -1,0 +1,13 @@
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\collections_practice\obj\Debug\netcoreapp3.1\collections_practice.csprojAssemblyReference.cache
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\collections_practice\obj\Debug\netcoreapp3.1\collections_practice.AssemblyInfoInputs.cache
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\collections_practice\obj\Debug\netcoreapp3.1\collections_practice.AssemblyInfo.cs
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\collections_practice\obj\Debug\netcoreapp3.1\collections_practice.csproj.CoreCompileInputs.cache
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\collections_practice\bin\Debug\netcoreapp3.1\collections_practice.exe
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\collections_practice\bin\Debug\netcoreapp3.1\collections_practice.deps.json
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\collections_practice\bin\Debug\netcoreapp3.1\collections_practice.runtimeconfig.json
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\collections_practice\bin\Debug\netcoreapp3.1\collections_practice.runtimeconfig.dev.json
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\collections_practice\bin\Debug\netcoreapp3.1\collections_practice.dll
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\collections_practice\bin\Debug\netcoreapp3.1\collections_practice.pdb
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\collections_practice\obj\Debug\netcoreapp3.1\collections_practice.dll
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\collections_practice\obj\Debug\netcoreapp3.1\collections_practice.pdb
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\collections_practice\obj\Debug\netcoreapp3.1\collections_practice.genruntimeconfig.cache

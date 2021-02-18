@@ -1,0 +1,41 @@
+@model Dish;
+
+<h1 class="display-4">Edit Dish</h1>
+<form action="/update-dish" method="post">
+    <input type="hidden" name="DishId" value="@Model.DishId">
+    <div class="row">
+        <label for="ChefName">Chef:</label>
+        <input type="text" name="ChefName" id="ChefName" value="@Model.ChefName" />
+        <span asp-validation-for="ChefName" class="validation"></span>
+    </div>
+    <div class="row">
+        <label for="DishName">Name of Dish:</label>
+        <input type="text" id="DishName" name="DishName" value="@Model.DishName">
+        <span asp-validation-for="DishName" class="validation"></span>
+    </div>
+    <div class="row">
+        <label for="Calories">Calories:</label>
+        <input type="text" id="Calories" name="Calories" value="@Model.Calories">
+        <span asp-validation-for="Calories" class="validation"></span>
+    </div>
+    <div class="row">
+        <label asp-for="Rating"></label>
+        <select id="Rating" name="Rating">
+            <option value="@Model.Rating">@Model.Rating</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <span asp-validation-for="Rating" class="validation"></span>
+    </div>
+    <div class="row">
+        <label for="Description">Description:</label>
+        <textarea name="Description" id="Description" cols="30" rows="10">@Model.Description</textarea>
+        <span asp-validation-for="Description" class="validation"></span>
+    </div>
+    <div class="row">
+        <input type="submit" />
+    </div>
+</form>

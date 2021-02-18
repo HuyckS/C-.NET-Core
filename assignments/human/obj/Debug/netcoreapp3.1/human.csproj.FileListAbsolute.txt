@@ -1,0 +1,13 @@
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\human\bin\Debug\netcoreapp3.1\human.exe
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\human\bin\Debug\netcoreapp3.1\human.deps.json
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\human\bin\Debug\netcoreapp3.1\human.runtimeconfig.json
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\human\bin\Debug\netcoreapp3.1\human.runtimeconfig.dev.json
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\human\bin\Debug\netcoreapp3.1\human.dll
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\human\bin\Debug\netcoreapp3.1\human.pdb
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\human\obj\Debug\netcoreapp3.1\human.csprojAssemblyReference.cache
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\human\obj\Debug\netcoreapp3.1\human.AssemblyInfoInputs.cache
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\human\obj\Debug\netcoreapp3.1\human.AssemblyInfo.cs
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\human\obj\Debug\netcoreapp3.1\human.csproj.CoreCompileInputs.cache
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\human\obj\Debug\netcoreapp3.1\human.dll
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\human\obj\Debug\netcoreapp3.1\human.pdb
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\human\obj\Debug\netcoreapp3.1\human.genruntimeconfig.cache

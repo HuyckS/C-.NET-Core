@@ -1,0 +1,13 @@
+C:\Users\Spence\Desktop\CodingDojo\java_C#\assignments\firstCSharp\bin\Debug\netcoreapp3.1\firstCSharp.exe
+C:\Users\Spence\Desktop\CodingDojo\java_C#\assignments\firstCSharp\bin\Debug\netcoreapp3.1\firstCSharp.deps.json
+C:\Users\Spence\Desktop\CodingDojo\java_C#\assignments\firstCSharp\bin\Debug\netcoreapp3.1\firstCSharp.runtimeconfig.json
+C:\Users\Spence\Desktop\CodingDojo\java_C#\assignments\firstCSharp\bin\Debug\netcoreapp3.1\firstCSharp.runtimeconfig.dev.json
+C:\Users\Spence\Desktop\CodingDojo\java_C#\assignments\firstCSharp\bin\Debug\netcoreapp3.1\firstCSharp.dll
+C:\Users\Spence\Desktop\CodingDojo\java_C#\assignments\firstCSharp\bin\Debug\netcoreapp3.1\firstCSharp.pdb
+C:\Users\Spence\Desktop\CodingDojo\java_C#\assignments\firstCSharp\obj\Debug\netcoreapp3.1\firstCSharp.csprojAssemblyReference.cache
+C:\Users\Spence\Desktop\CodingDojo\java_C#\assignments\firstCSharp\obj\Debug\netcoreapp3.1\firstCSharp.AssemblyInfoInputs.cache
+C:\Users\Spence\Desktop\CodingDojo\java_C#\assignments\firstCSharp\obj\Debug\netcoreapp3.1\firstCSharp.AssemblyInfo.cs
+C:\Users\Spence\Desktop\CodingDojo\java_C#\assignments\firstCSharp\obj\Debug\netcoreapp3.1\firstCSharp.csproj.CoreCompileInputs.cache
+C:\Users\Spence\Desktop\CodingDojo\java_C#\assignments\firstCSharp\obj\Debug\netcoreapp3.1\firstCSharp.dll
+C:\Users\Spence\Desktop\CodingDojo\java_C#\assignments\firstCSharp\obj\Debug\netcoreapp3.1\firstCSharp.pdb
+C:\Users\Spence\Desktop\CodingDojo\java_C#\assignments\firstCSharp\obj\Debug\netcoreapp3.1\firstCSharp.genruntimeconfig.cache

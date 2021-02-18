@@ -1,0 +1,49 @@
+.form-content {
+  vertical-align: top;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  display: block;
+  width: 14%;
+  margin-left: 43%;
+  margin-right: 43%;
+}
+
+.row {
+  display: inline-block;
+  margin-bottom: 1%;
+}
+
+.row label {
+  margin-right: 2%;
+}
+
+.form-info {
+  display: inline-flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.form-result {
+  width: 14%;
+  margin-left: 43%;
+  margin-right: 43%;
+  text-align: left;
+}
+.form-info-left {
+  display: inline-block;
+  margin-right: 1%;
+}
+
+.form-info-right {
+  display: inline-block;
+}
+
+.form-result a {
+  margin-left: 45%;
+}

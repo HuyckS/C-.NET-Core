@@ -1,0 +1,75 @@
+body {
+  display: block;
+}
+
+.nav-bar {
+  text-align: center;
+  width: 100%;
+}
+
+.page-title {
+  text-align: center;
+  width: 100%;
+}
+
+.content {
+  display: inline-flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.left {
+  text-align: center;
+  width: 60%;
+  margin: 5% 10% 5% 10%;
+}
+.profile-pic {
+  width: 100%;
+  height: auto;
+}
+
+.right {
+  text-align: left;
+  width: 80%;
+  margin: 5%;
+}
+
+.contact-form {
+  display: inline-flex;
+  justify-content: center;
+  width: 80%;
+}
+
+.left-form {
+  margin: 1%;
+}
+
+.right-form {
+  margin: 1%;
+}
+
+.row {
+  display: inline-block;
+  margin: 2%;
+}
+
+.row-submit {
+  align-self: center;
+}
+
+.content-scroll {
+  margin: 10%;
+  width: 80%;
+  height: 500px;
+  overflow: auto;
+}
+
+.project {
+  display: inline-flex;
+  justify-content: space-evenly;
+  margin: 10%;
+}
+
+.block {
+  margin: 1%;
+}
