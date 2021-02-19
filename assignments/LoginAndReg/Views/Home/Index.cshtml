@@ -1,8 +1,38 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+@model User;
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Register to this cool site!</h1>
+    <a href="">Login</a>
+    <form action="" method="">
+        <div>
+            <label asp-for='FirstName'></label>
+            <input asp-for='FirstName' type='text' />
+            <span asp-validation-for='FirstName' class='validation'></span>
+        </div>
+        <div>
+            <label asp-for='LastName'></label>
+            <input asp-for='LastName' type='text' />
+            <span asp-validation-for='LastName' class='validation'></span>
+        </div>
+        <div>
+            <label asp-for='Email'></label>
+            <input asp-for='Email' type='text' />
+            <span asp-validation-for='Email' class='validation'></span>
+        </div>
+        <div>
+            <label asp-for='Password'></label>
+            <input asp-for='Password' type='password' />
+            <span asp-validation-for='Password' class='validation'></span>
+        </div>
+        <div>
+            <label asp-for='Confirm'></label>
+            <input asp-for='Confirm' type='password' />
+            <span asp-validation-for='Confirm' class='validation'></span>
+        </div>
+        <div>
+            <input type="submit" value="Sign Up Now!" />
+        </div>
+    </form>
 </div>
