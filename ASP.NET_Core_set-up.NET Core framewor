@@ -1,0 +1,163 @@
+Set up Web App for ASP.NET Core framework
+
+1) Open terminal and navigate to a folder you want your project folder in.
+
+2) Choose a unique project name and run this: 
+    
+    dotnet new web --no-https -o ProjectName
+
+    or
+
+    dotnet new mvc --no-https -o ProjectName
+
+3) Configure work env to Development mode:
+
+    Windows
+    Command Line:    setx ASPNETCORE_ENVIRONMENT Development
+
+    Windows
+    PowerShell:    [Environment]::SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT","Development","User")
+
+
+    macOS/Linux:    export ASPNETCORE_ENVIRONMENT=Development
+
+    Note: Restart Terminals & VS Code (if you have updated environment variables with them running)
+
+4) Add these packages in your terminal:
+
+    dotnet add package Pomelo.EntityFrameworkCore.MySql --version 3.1.1
+    dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.1.5
+
+5) cd into project
+
+6) code .
+
+5) Inside Startup.cs
+
+        i.) Add this line under ConfigureServices method
+
+            services.AddMvc(options => options.EnableEndpointRouting = false);
+            services.AddDbContext<MyContext>(options => options.UseMySql (Configuration["DBInfo:ConnectionString"])); 
+        
+        ii.) Add these lines under Configure method
+
+            app.UseStaticFiles();
+            app.UseMvc();
+
+        iii.) Delete or comment out the app.UseRouting() and app.UseEndpoints() lines of code
+
+ ) Add DB Info in appsettings.json:
+
+    i.)         ,
+        "DBInfo":
+            {
+                "Name": "MySQLconnect",
+                "ConnectionString": "server=localhost;userid=root;password=password;port=3306;database=dishdb;SslMode=None"
+            }
+
+        ii.) Don't forget to change the password and database!
+
+ ) Add a gitignore file for the appsettings.json file
+
+ ) 
+
+ ) Build Model:
+
+    i.) example:
+        using System;
+        using System.ComponentModel.DataAnnotations;
+        namespace Monsters.Models
+        {
+            public class Monster
+            {
+                [Key]
+                public int MonsterId { get; set; }
+                public string Name { get; set; }
+                public int Height { get; set; }
+                public string Description { get; set; }
+                public DateTime CreatedAt { get; set; } = DateTime.Now;
+                public DateTime UpdatedAt { get; set; } = DateTime.Now;
+            }
+        }
+    
+    ii.) Build a MyContext.cs file in Models:
+        using Microsoft.EntityFrameworkCore;
+        namespace Monster.Models
+        { 
+            // the MyContext class representing a session with our MySQL 
+            // database allowing us to query for or save data
+            public class MyContext : DbContext 
+            { 
+                public MyContext(DbContextOptions options) : base(options) { }
+                // the "Monsters" table name will come from the DbSet variable name
+                public DbSet<Monster> Monsters { get; set; }
+            }
+        }
+
+    iii.) Change the namespace and DbSet
+
+6) Build Controllers -- folder in project folder that must be written exactly as shown
+
+7) Build a test controller to see if it everything is connected properly:
+    
+    i.) Add a controller for each major kind of model in the app:
+
+        example: HelloController.cs
+
+        //code -- type for practice/better memory!
+
+        using Microsoft.AspNetCore.Mvc;
+        namespace YourNamespace.Controllers     //be sure to use your own project's namespace!
+        {
+            public class HelloController : Controller   //remember inheritance??
+            {
+                //for each route this controller is to handle:
+                [HttpGet]       //type of request
+                [Route("")]     //associated route string (exclude the leading /) 
+                public string Index()
+                {
+                    return "Hello World from HelloController!";
+                }
+            }
+        }
+
+8) Build Views folder in your project folder (same level as Controllers)
+
+    i.) Build sub-folder in Views that is the name of your model (name matches its controller)
+
+        example for HelloController.cs:    Hello
+
+    ii.) Build an Index.cshtml file to write out your html
+
+    iii.) Add some html.
+
+9) Build wwwroot folder in your project folder (same level as Views)
+
+10) Create appropriate sub-folders for each static file type
+
+    example: CSS folder -- this will contain style.css files
+
+             Add these files to cshtml files:
+
+             // In this context '~' refers to the wwwroot folder
+              
+                 <link rel="stylesheet" href="~/css/style.css"/>
+
+11) Open localhost:5000 to see web app
+
+12) Add these in terminal if you didn't use the mvc create option:
+
+    dotnet new viewimports -o Views
+    dotnet new viewstart -o Views
+
+13) Run watch in terminal to update project with changes as they are made:
+
+    dotnet watch run
+
+ ) Migrations:
+
+        dotnet ef migrations add FirstMigration    or   dotnet ef migrations add NameOfYourMigration
+
+        dotnet ef database update
+
+
