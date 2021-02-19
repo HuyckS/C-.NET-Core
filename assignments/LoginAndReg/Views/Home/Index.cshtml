@@ -4,8 +4,8 @@
 @model User;
 <div class="text-center">
     <h1 class="display-4">Register to this cool site!</h1>
-    <a href="">Login</a>
-    <form action="" method="">
+    <a href="/login">Login</a>
+    <form action="/create-user" method="post">
         <div>
             <label asp-for='FirstName'></label>
             <input asp-for='FirstName' type='text' />

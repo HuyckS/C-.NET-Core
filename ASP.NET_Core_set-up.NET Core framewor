@@ -34,7 +34,7 @@ Set up Web App for ASP.NET Core framework
 
 5) Inside Startup.cs
 
-        o.)Add using ProjectName.Models with the import statements
+        o.)Add using ProjectName.Models  and using Microsoft.EntityFrameworkCore; with the import statements
 
         i.) Add this line under ConfigureServices method
             
