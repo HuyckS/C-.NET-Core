@@ -81,28 +81,36 @@ namespace LoginAndReg.Controllers
                 {
                     //store id in session?
                     HttpContext.Session.SetInt32("UserId", userInDb.UserId);
-                    return RedirectToAction("SignedIn");
+                    return RedirectToAction("Success");
                 }
             }
             return View("Login");
         }
 
-        [HttpGet("signedIn")]
-        public IActionResult SignedIn()
-        {
-            var signedIn = HttpContext.Session.GetInt32("UserId");
-            if (signedIn != null)
-            {
-                return RedirectToAction("Success");
-            }
+        // [HttpGet("signedIn")]
+        // public IActionResult SignedIn()
+        // {
+        //     var signedIn = HttpContext.Session.GetInt32("UserId");
+        //     if (signedIn != null)
+        //     {
+        //         return RedirectToAction("Success");
+        //     }
 
-            return RedirectToAction("Login");
-        }
+        //     return RedirectToAction("Login");
+        // }
 
         [HttpGet("success")]
         public IActionResult Success()
         {
-            return View();
+            var signedIn = HttpContext.Session.GetInt32("UserId");
+            if (signedIn > 0)
+            {
+                var currentUser = _context.Users
+                    .FirstOrDefault(u => u.UserId == signedIn);
+                return View(currentUser);
+            }
+
+            return View("Login");
         }
 
         [HttpGet("logout")]
