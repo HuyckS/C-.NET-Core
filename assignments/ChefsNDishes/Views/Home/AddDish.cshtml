@@ -1,0 +1,48 @@
+@model ChefsNDishes.Models.Dish;
+<div class="text-center">
+    <h1 class="display-4">Add a Dish!</h1>
+    <a href="/">Home</a>
+    <form action="/create-dish" method="post">
+        <div class="row">
+            <label asp-for="ChefId">Chef Name:</label>
+            <select id="ChefId" name="ChefId">
+                <option value=""></option>
+                @foreach (var c in @ViewBag.Chefs)
+                {
+                    <option value="@c.ChefId">@c.FirstName @c.LastName</option>
+                }
+            </select>
+            <span asp-validation-for="ChefId" class="validation"></span>
+        </div>
+        <div class="row">
+            <label for="DishName">Name of Dish:</label>
+            <input type="text" id="DishName" name="DishName">
+            <span asp-validation-for="DishName" class="validation"></span>
+        </div>
+        <div class="row">
+            <label for="Calories">Calories:</label>
+            <input type="text" id="Calories" name="Calories">
+            <span asp-validation-for="Calories" class="validation"></span>
+        </div>
+        <div class="row">
+            <label asp-for="Tastiness"></label>
+            <select id="Tastiness" name="Tastiness">
+                <option></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <span asp-validation-for="Tastiness" class="validation"></span>
+        </div>
+        <div class="row">
+            <label for="Description">Description:</label>
+            <textarea name="Description" id="Description" cols="30" rows="10" placeholder="Your thoughts here..."></textarea>
+            <span asp-validation-for="Description" class="validation"></span>
+        </div>
+        <div class="row">
+            <input type="submit" />
+        </div>
+    </form>
+</div>

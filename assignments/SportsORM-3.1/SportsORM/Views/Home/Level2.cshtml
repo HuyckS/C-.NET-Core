@@ -13,4 +13,123 @@
             <li>...everyone with the last name "Flores" who DOESN'T (currently) play for the Washington Roughriders</li>
         </ol>
     </div>
+
+
+    <table class="table table-striped">
+        <tr>
+            <th>League Name</th>
+            <th>Team Name</th>
+        </tr>
+        @foreach (var t in @ViewBag.AtlanticConferenceTeams)
+
+
+
+        {
+            <tr>
+                <td>@t.CurrLeague.Name</td>
+                <td>@t.TeamName</td>
+            </tr>
+
+        }
+    </table>
+    <table class="table table-striped">
+        <tr>
+            <th>Team Name and Location</th>
+            <th>Player Name</th>
+        </tr>
+        @foreach (var p in @ViewBag.BostonPenguinsPlayers.CurrentPlayers)
+
+
+
+        {
+            <tr>
+                <td>@ViewBag.BostonPenguinsPlayers.Location @ViewBag.BostonPenguinsPlayers.TeamName</td>
+                <td>@p.FirstName @p.LastName</td>
+            </tr>
+
+        }
+    </table>
+    <table class="table table-striped">
+        <tr>
+            <th>League Name</th>
+            <th>Player Name</th>
+        </tr>
+        @foreach (var p in @ViewBag.IntCollegiateBaseballConfPlayers.CurrentPlayers)
+        {
+            @if (p.LastName == "Lopez")
+
+                { 
+            <tr>
+                <td>@ViewBag.IntCollegiateBaseballConfPlayers.TeamName</td>
+                <td>@p.FirstName @p.LastName</td>
+            </tr>
+
+            }
+
+        }
+    </table>
+    <table class="table table-striped">
+        <tr>
+            <th>League Name</th>
+            <th>Player Name</th>
+        </tr>
+        @foreach (var p in @ViewBag.USAmateurFootballPlayers.CurrentPlayers)
+        {
+            <tr>
+                <td>@ViewBag.USAmateurFootballPlayers.TeamName</td>
+                <td>@p.FirstName @p.LastName</td>
+            </tr>
+        }
+    </table>
+<table class="table table-striped">
+        <tr>
+            <th>Sport</th>
+            <th>Player Name</th>
+        </tr>
+        @foreach (var p in @ViewBag.FootballPlayers)
+        {
+            <tr>
+                <td>Football</td>
+                <td>@p.FirstName @p.LastName</td>
+            </tr>
+        }
+    </table>
+    <table class="table table-striped">
+        <tr>
+            <th>Team Name</th>
+        </tr>
+        @foreach (var t in @ViewBag.TeamsWithSophia)
+        {
+            <tr>
+                <td>@t.TeamName </td>
+            </tr>
+        }
+    </table>
+    <table class="table table-striped">
+        <tr>
+            <th>League Name</th>
+        </tr>
+        @foreach (var l in @ViewBag.LeaguesWithSophia)
+        {
+            <tr>
+                <td>@l.Name </td>
+            </tr>
+
+        }
+    </table>
+    <table class="table table-striped">
+        <tr>
+            <th>Player Name</th>
+        </tr>
+        @foreach (var p in @ViewBag.LeaguesWithSophia)
+        {
+            if(@p.CurrentTeam != "Roughriders")
+            {
+            <tr>
+                <td>@p.FirstName @p.LastName </td>
+            </tr>
+            }
+
+        }
+    </table>
 </div>

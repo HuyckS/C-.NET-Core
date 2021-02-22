@@ -1,0 +1,28 @@
+<div class="text-center">
+    <h1 class="display-4">
+        <div>
+            <a href="/">Chefs</a> | Dishes
+        </div>
+    </h1>
+    <div>
+        <a href="/dish-form">Add a Dish</a>
+    </div>
+    <h3>Yum, take a look at our tasty dishes!</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Chef</th>
+            <th>Tastiness</th>
+            <th>Calories</th>
+        </tr>
+        @foreach (var d in @ViewBag.Dishes)
+        {
+            <tr>
+                <td>@d.Name</td>
+                <td>@d.Creator</td>
+                <td>@d.Tastiness</td>
+                <td>@d.Calories</td>
+            </tr>
+        }
+    </table>
+</div>

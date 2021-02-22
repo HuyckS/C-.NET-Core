@@ -11,7 +11,6 @@ namespace CRUDelicious.Models
         public string DishName { get; set; }
         public int Calories { get; set; }
 
-        [Display(Name = "Tastiness")]
         [Range(1, 5)]
         public int Rating { get; set; }
 
