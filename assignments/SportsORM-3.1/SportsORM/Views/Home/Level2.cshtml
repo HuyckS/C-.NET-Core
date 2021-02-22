@@ -123,7 +123,7 @@
         </tr>
         @foreach (var p in @ViewBag.LeaguesWithSophia)
         {
-            if(@p.CurrentTeam != "Roughriders")
+            if(@p.CurrentTeam.TeamName != "Roughriders")
             {
             <tr>
                 <td>@p.FirstName @p.LastName </td>
