@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Product Name</h1>
+    <div>
+        <div>
+            <h3>Categories:</h3>
+        </div>
+        <div>
+            <form action="" method="post">
+                <div>
+                    <label asp-for='Category'></label>
+                    <input asp-for='Category' type='' />
+                    <span asp-validation-for='Category' class='validation'></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -25,6 +25,7 @@ namespace ChefsNDishes.Controllers
         {
             ViewBag.Chefs = _context.Chefs
                 .Include(c => c.CreatedDishes);
+
             return View();
         }
 
@@ -37,6 +38,7 @@ namespace ChefsNDishes.Controllers
         [HttpPost("create-chef")]
         public IActionResult CreateChef(Chef newChef)
         {
+
             _context.Add(newChef);
             _context.SaveChanges();
             return RedirectToAction("Index");
@@ -61,6 +63,7 @@ namespace ChefsNDishes.Controllers
         public IActionResult DishesIndex()
         {
             ViewBag.Dishes = _context.Dishes;
+                .Include(d => d.Creator);
             return View();
         }
 

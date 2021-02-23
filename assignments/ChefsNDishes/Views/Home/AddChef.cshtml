@@ -3,22 +3,22 @@
     <h1 class="display-4">Add a Chef!</h1>
     <a href="/">Home</a>
     <form action="/create-chef" method="post">
-        <div class="row">
+        <div class="form-group">
             <label for="FirstName">First Name:</label>
             <input type="text" name="FirstName" id="FirstName" />
             <span asp-validation-for="FirstName" class="validation"></span>
         </div>
-        <div class="row">
+        <div class="form-group">
             <label for="LastName">Last Name:</label>
             <input type="text" id="LastName" name="LastName">
             <span asp-validation-for="LastName" class="validation"></span>
         </div>
-        <div class="row">
+        <div class="form-group">
             <label for="DateOfBirth">Date Of Birth:</label>
             <input type="date" id="DateOfBirth" name="DateOfBirth">
             <span asp-validation-for="DateOfBirth" class="validation"></span>
         </div>
-        <div class="row">
+        <div class="form-group">
             <input type="submit" />
         </div>
     </form>

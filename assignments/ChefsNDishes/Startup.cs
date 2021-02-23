@@ -26,7 +26,7 @@ namespace ChefsNDishes
         {
             services.AddSession();
             services.AddMvc(options => options.EnableEndpointRouting = false);
-            services.AddDbContext<MyContext>(options => options.UseMySql (Configuration["DBInfo:ConnectionString"]));
+            services.AddDbContext<MyContext>(options => options.UseMySql(Configuration["DBInfo:ConnectionString"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

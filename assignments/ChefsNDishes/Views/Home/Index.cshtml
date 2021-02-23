@@ -12,19 +12,26 @@
         <a href="/chef-form">Add a Chef</a>
     </div>
     <h3>Check out our roster of Chefs!</h3>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th># of Dishes</th>
-        </tr>
-        @foreach (var c in @ViewBag.Chefs)
-        {
-            <tr>
-                <td>@c.FirstName @c.LastName</td>
-                <td>@c.DateOfBirth</td>
-                <td>@c.CreatedDishes.Count</td>
-            </tr>
-        }
-    </table>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th># of Dishes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c in @ViewBag.Chefs)
+                {
+                    int age = DateTime.Now.Year - @c.DateOfBirth.Year;
+                    <tr>
+                        <td>@c.FirstName @c.LastName</td>
+                        <td>@age</td>
+                        <td>@c.CreatedDishes.Count</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>

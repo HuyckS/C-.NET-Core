@@ -37,7 +37,7 @@ Set up Web App for ASP.NET Core framework
         o.)Add using ProjectName.Models  and using Microsoft.EntityFrameworkCore; with the import statements
 
         i.) Add this line under ConfigureServices method
-            
+
             services.AddSession();
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddDbContext<MyContext>(options => options.UseMySql (Configuration["DBInfo:ConnectionString"])); 
