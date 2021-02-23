@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Category Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4"><a href="/">Products</a> | Categories</h1>
+    <div>
+        <div>
+            <h3>New Category</h3>
+            <form action="create-category" method="post">
+                <div>
+                    <label asp-for='CategoryName'></label>
+                    <input asp-for='CategoryName' type='text' />
+                    <span asp-validation-for='CategoryName' class='validation'></span>
+                </div>
+                <div>
+                    <input type="submit" value="Create">
+                </div>
+            </form>
+        </div>
+        <div>
+            <h3>Existing Categories</h3>
+
+        </div>
+    </div>
+</div>
