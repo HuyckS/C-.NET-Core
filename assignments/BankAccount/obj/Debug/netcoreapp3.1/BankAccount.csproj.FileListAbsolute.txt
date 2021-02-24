@@ -60,3 +60,4 @@ C:\Users\Spence\Desktop\CodingDojo\C#\assignments\BankAccount\obj\Debug\netcorea
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\BankAccount\obj\Debug\netcoreapp3.1\staticwebassets\BankAccount.StaticWebAssets.Manifest.cache
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\BankAccount\obj\Debug\netcoreapp3.1\staticwebassets\BankAccount.StaticWebAssets.xml
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\BankAccount\obj\Debug\netcoreapp3.1\BankAccount.genruntimeconfig.cache
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\BankAccount\obj\Debug\netcoreapp3.1\Razor\Views\Home\TransactionFormPartial.cshtml.g.cs

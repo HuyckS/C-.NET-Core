@@ -136,6 +136,47 @@ namespace SportsORM.Controllers
         [HttpGet("level_3")]
         public IActionResult Level3()
         {
+            ViewBag.SamEvansTeams = _context
+                .Players
+                .Include(p => p.AllTeams)
+                    .ThenInclude(pt => pt.TeamOfPlayer)
+                .FirstOrDefault(p => p.FirstName == "Samuel" && p.LastName == "Evans");
+
+            ViewBag.TigerCatsPlayers = _context
+                .Teams
+                .Include(t => t.AllPlayers)
+                    .ThenInclude(pt => pt.PlayerOnTeam)
+                .FirstOrDefault(t => t.TeamName == "Tiger-Cats");
+
+            ViewBag.FormerVikingsPlayers = _context
+                .Teams
+                .Include(t => t.AllPlayers)
+                    .ThenInclude(pt => pt.PlayerOnTeam)
+                    .ThenInclude(p => p.CurrentTeam)
+                .FirstOrDefault(t => t.TeamName == "Vikings");
+
+            ViewBag.JacobGrayTeams = _context
+                .Players
+                .Include(p => p.AllTeams)
+                    .ThenInclude(pt => pt.TeamOfPlayer)
+                .FirstOrDefault(p => p.FirstName == "Jacob" && p.LastName == "Gray");
+
+            ViewBag.AllJoshuasAtlanticFed = _context
+                .Teams
+                .Include(t => t.AllPlayers)
+                    .ThenInclude(pt => pt.PlayerOnTeam)
+                .Where(t => t.CurrLeague.Name == "Atlantic Federation of Amateur Baseball Players");
+
+            ViewBag.TeamsGreaterThan12Players = _context
+                .Teams
+                .Include(t => t.AllPlayers)
+                .Where(t => t.AllPlayers.Count > 12);
+
+            ViewBag.SortedPlayersByTeamsPlayed = _context
+                .Players
+                .Include(p => p.AllTeams)
+                .OrderByDescending(p => p.AllTeams.Count);
+
             return View();
         }
 

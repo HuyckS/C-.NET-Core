@@ -12,4 +12,185 @@
             <li>...all players, sorted by the number of teams they've played for</li>
         </ol>
     </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Player Name</th>
+                <th>All Teams</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var playerteam in @ViewBag.SamEvansTeams.AllTeams)
+            {
+                <tr>
+                    <td>@ViewBag.SamEvansTeams.FirstName @ViewBag.SamEvansTeams.LastName</td>
+                    <td>@playerteam.TeamOfPlayer.TeamName</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>Team Name</th>
+                <th>Player Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var playerteam in @ViewBag.TigerCatsPlayers.AllPlayers)
+            {
+                <tr>
+                    <td>@ViewBag.TigerCatsPlayers.TeamName</td>
+                    <td>@playerteam.PlayerOnTeam.FirstName @playerteam.PlayerOnTeam.LastName</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>Team Name</th>
+                <th>Player Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pt in @ViewBag.FormerVikingsPlayers.AllPlayers)
+            {
+
+
+
+
+
+
+
+
+
+
+
+                {
+                    <tr>
+                        <td>@ViewBag.FormerVikingsPlayers.TeamName</td>
+                        <td>@pt.PlayerOnTeam.FirstName @pt.PlayerOnTeam.LastName</td>
+                    </tr>
+
+                }
+
+            }
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>Team Name</th>
+                <th>Player Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pt in @ViewBag.JacobGrayTeams.AllTeams)
+            {
+
+
+
+
+
+
+
+
+
+
+
+                if (@pt.TeamOfPlayer.TeamName != "Colts")
+
+
+
+
+
+
+
+
+
+
+
+                {
+                    <tr>
+                        <td>@ViewBag.JacobGrayTeams.FirstName @ViewBag.JacobGrayTeams.LastName</td>
+                        <td>@pt.TeamOfPlayer.TeamName</td>
+                    </tr>
+
+                }
+
+            }
+        </tbody>
+    </table>
+    @* <table>
+        <thead>
+        <tr>
+        <th>Team Name</th>
+        <th>Player Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var t in @ViewBag.AllJoshuasAtlanticFed)
+        {
+
+
+
+        if (@t.AllPlayers.PlayerOnTeam.FirstName == "Joshua")
+
+
+
+
+
+        {
+        <tr>
+        <td>@t.TeamName</td>
+        <td>@t.AllPlayers.PlayerOnTeam.FirstName</td>
+        </tr>
+
+        }
+
+        }
+        </tbody>
+        </table> *@
+    <table>
+        <thead>
+            <tr>
+                <th>Team Name</th>
+                <th>Player Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var t in @ViewBag.TeamsGreaterThan12Players)
+            {
+
+                <tr>
+                    <td>@t.TeamName</td>
+                    <td>@t.AllPlayers.Count</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>Team Name</th>
+                <th>Teams Played</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in @ViewBag.SortedPlayersByTeamsPlayed)
+            {
+
+                <tr>
+                    <td>@p.FirstName @p.LastName</td>
+                    <td>@p.AllTeams.Count</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
 </div>

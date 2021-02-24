@@ -42,7 +42,7 @@ namespace BankAccount.Controllers
                 _context.Users.Add(newUser);
                 _context.SaveChanges();
                 HttpContext.Session.SetInt32("UserId", newUser.UserId);
-                return RedirectToAction("ViewAccount", new { id = newUser.UserId });
+                return RedirectToAction("ViewAccount");
             }
             return View("Register");
         }
@@ -78,26 +78,21 @@ namespace BankAccount.Controllers
                 else
                 {
                     HttpContext.Session.SetInt32("UserId", userLogged.UserId);
-                    return RedirectToAction("ViewAccount", new { id = userLogged.UserId });
+                    return RedirectToAction("ViewAccount");
                 }
             }
             return View("Login");
         }
 
-        [HttpGet("account/{id}")]
-        public IActionResult ViewAccount(int id)
+        [HttpGet("account")]
+        public IActionResult ViewAccount()
         {
             int? signedIn = HttpContext.Session.GetInt32("UserId");
             if (signedIn > 0)
             {
-                var currentUser = _context.Users
+                ViewBag.currentUser = _context.Users
                     .Include(u => u.UserHistory)
                     .FirstOrDefault(u => u.UserId == signedIn);
-                var sortedUserHistory = currentUser.UserHistory
-                    .OrderByDescending(t => t.CreatedAt)
-                    .ToList();
-                ViewBag.currentUser = currentUser;
-                ViewBag.sortedUserHistory = sortedUserHistory;
                 return View();
             }
 
@@ -107,22 +102,35 @@ namespace BankAccount.Controllers
         [HttpPost("create-transaction")]
         public IActionResult CreateTransaction(Transaction newTransaction)
         {
-            var account = _context.Users.FirstOrDefault(u => u.UserId == newTransaction.UserId);
-            if (account.CurrentBalance < newTransaction.Amount)
+            int? signedIn = HttpContext.Session.GetInt32("UserId");
+            if (signedIn > 0)
             {
-                ModelState.AddModelError("Amount", "Transaction cannot be completed -- insufficient funds");
-                return View("ViewAccount", new { id = newTransaction.UserId });
-            }
-            if (ModelState.IsValid)
-            {
-                var result = account.CurrentBalance + newTransaction.Amount;
-                account.CurrentBalance = result;
-                account.UpdatedAt = DateTime.Now;
-                _context.SaveChanges();
-                return RedirectToAction("ViewAccount", new { id = account.UserId });
-            }
-            return View("ViewAccount", new { id = newTransaction.UserId });
+                var account = _context.Users.FirstOrDefault(u => u.UserId == (int)signedIn);
 
+                if (account.CurrentBalance + newTransaction.Amount < 0)
+                {
+                    ModelState.AddModelError("Amount", "Transaction cannot be completed -- insufficient funds");
+                    ViewBag.currentUser = _context.Users
+                    .Include(u => u.UserHistory)
+                    .FirstOrDefault(u => u.UserId == signedIn);
+
+                    return View("ViewAccount");
+                }
+
+                newTransaction.UserId = account.UserId;
+
+                if (ModelState.IsValid)
+                {
+                    var result = account.CurrentBalance + newTransaction.Amount;
+                    account.CurrentBalance = result;
+                    account.UpdatedAt = DateTime.Now;
+                    _context.Transactions.Add(newTransaction); //create the transaction in the db
+                    _context.SaveChanges();
+                    return RedirectToAction("ViewAccount");
+                }
+                return View("ViewAccount");
+            }
+            return View();
         }
         public IActionResult Privacy()
         {

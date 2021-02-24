@@ -15,6 +15,7 @@ namespace BankAccount.Models
         [Required]
         public string LastName { get; set; }
 
+        [Display()]
         public decimal CurrentBalance { get; set; }
         [EmailAddress]
         [Required]
@@ -26,6 +27,7 @@ namespace BankAccount.Models
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
         public List<Transaction> UserHistory { get; set; }
+
         [NotMapped]
         [Compare("Password")]
         [DataType(DataType.Password)]

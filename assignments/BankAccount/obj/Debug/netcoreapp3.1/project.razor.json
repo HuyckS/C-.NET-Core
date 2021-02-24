@@ -14397,6 +14397,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Spence\\Desktop\\CodingDojo\\C#\\assignments\\BankAccount\\Views\\Home\\TransactionFormPartial.cshtml",
+      "TargetPath": "Views\\Home\\TransactionFormPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Spence\\Desktop\\CodingDojo\\C#\\assignments\\BankAccount\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"

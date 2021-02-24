@@ -69,6 +69,20 @@ class BST {
     //   return node.val;
 
     // }
+
+    // min(node = this.root) {
+    // if(node.val == null){
+    //     return null;
+    //   }
+    //   if(node.left == null){
+    //     return node.val;
+    //   }
+    //   return bst.min(node.left);
+
+
+    // }
+
+
     /**
      * Returns the maximum value in the BST: stretch for recursion
      * 
