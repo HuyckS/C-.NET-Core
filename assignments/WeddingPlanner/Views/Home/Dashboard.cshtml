@@ -1,0 +1,54 @@
+@* ViewBag.Weddings *@
+@* ViewBag.CurrentUser *@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+@model WeddingPlanner.Models.User;
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Wedding Planner</h1>
+    <a href="/logout">Log out</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Wedding</th>
+                <th>Date</th>
+                <th>Guest</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Wedding w in ViewBag.Weddings)
+            {
+                <tr>
+                    <td><a href="/wedding-details/@w.WeddingId">@w.WedderOne & @w.WedderTwo</a></td>
+                    <td>@w.WeddingDate</td>
+                    <td>@w.WeddingRSVPs.Count</td>
+                    <td>
+                        @if (w.WeddingPlanner.UserId == ViewBag.CurrentUser.UserId)
+                        {
+                            <form action="/delete/wedding/@w.WeddingId" method="post">
+                                <input class="btn btn-danger" type="submit" value="Delete">
+                            </form>
+                        }
+                        else if (w.WeddingRSVPs.Any(r => r.UserId == ViewBag.CurrentUser.UserId))
+                        {
+                            <form action="/delete/rsvp/@w.WeddingId" method="post">
+                                <input class="btn btn-success" type="submit" value="UN-RSVP">
+                            </form>
+                        }
+                        else
+                        {
+                            <form action="/add/rsvp/@w.WeddingId" method="post">
+                                <input class="btn btn-info" type="submit" value="RSVP">
+                            </form>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div>
+        <a href="/create-wedding">New Wedding</a>
+    </div>
+</div>

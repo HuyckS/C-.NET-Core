@@ -1,0 +1,29 @@
+@* ViewBag.CurrentUser *@
+@* ViewBag.ThisWedding *@
+@{
+    ViewData["Title"] = "Wedding Details";
+}
+@model WeddingPlanner.Models.User;
+
+<div class="text-center">
+    <h1 class="display-4">@ViewBag.ThisWedding.WedderOne & @ViewBag.ThisWedding.WedderTwo Wedding</h1>
+    <div>
+        <a href="/dashboard">Dashboard</a> | <a href="/logout">Log out</a>
+    </div>
+    <div>
+        <div>
+            <h3>Date: @ViewBag.ThisWedding.WeddingDate</h3>
+            <h3>Guests: </h3>
+            <ul>
+                @foreach (RSVP r in @ViewBag.ThisWedding.WeddingRSVPs)
+                {
+                    <li>@r.UserWhoRSVPd.FirstName @r.UserWhoRSVPd.LastName</li>
+                }
+            </ul>
+        </div>
+        <div>
+            <iframe width="450" height="250" frameborder="0" style="border:0" src="@ViewBag.ThisWedding.WeddingAddress" allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>

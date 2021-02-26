@@ -162,10 +162,10 @@ namespace SportsORM.Controllers
                 .FirstOrDefault(p => p.FirstName == "Jacob" && p.LastName == "Gray");
 
             ViewBag.AllJoshuasAtlanticFed = _context
-                .Teams
-                .Include(t => t.AllPlayers)
-                    .ThenInclude(pt => pt.PlayerOnTeam)
-                .Where(t => t.CurrLeague.Name == "Atlantic Federation of Amateur Baseball Players");
+                .Players
+                .Include(p => p.CurrentTeam)
+                    .ThenInclude(t => t.CurrLeague)
+                .Where(p => p.CurrentTeam.CurrLeague.Name == "Atlantic Federation of Amateur Baseball Players");
 
             ViewBag.TeamsGreaterThan12Players = _context
                 .Teams

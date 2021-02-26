@@ -90,9 +90,13 @@ namespace BankAccount.Controllers
             int? signedIn = HttpContext.Session.GetInt32("UserId");
             if (signedIn > 0)
             {
-                ViewBag.currentUser = _context.Users
+                User currentUser = _context.Users
                     .Include(u => u.UserHistory)
                     .FirstOrDefault(u => u.UserId == signedIn);
+
+                ViewBag.History = currentUser.UserHistory.OrderByDescending(t => t.CreatedAt);
+                ViewBag.CurrentUser = currentUser;
+
                 return View();
             }
 
@@ -113,6 +117,7 @@ namespace BankAccount.Controllers
                     ViewBag.currentUser = _context.Users
                     .Include(u => u.UserHistory)
                     .FirstOrDefault(u => u.UserId == signedIn);
+
 
                     return View("ViewAccount");
                 }

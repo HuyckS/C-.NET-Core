@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Register/Login";
+}
+@model WeddingPlanner.Models.User;
+
+<div class="text-center">
+    <div class="d-flex">
+        <div class="col-lg-6">
+            <h1>Register</h1>
+            <div>
+                <form action="/register" method="post">
+                    <input type="hidden" name="CurrentBalance" value="0.00">
+                    <div class="form-group">
+                        <label asp-for='FirstName'></label>
+                        <input asp-for='FirstName' type='text' />
+                        <span asp-validation-for='FirstName' class='validation'></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for='LastName'></label>
+                        <input asp-for='LastName' type='text' />
+                        <span asp-validation-for='LastName' class='validation'></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for='Email'></label>
+                        <input asp-for='Email' type='text' />
+                        <span asp-validation-for='Email' class='validation'></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for='Password'></label>
+                        <input asp-for='Password' type='password' />
+                        <span asp-validation-for='Password' class='validation'></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for='Confirm'></label>
+                        <input asp-for='Confirm' type='password' />
+                        <span asp-validation-for='Confirm' class='validation'></span>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-primary" type="submit" value="Sign Up Now!" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <partial name="LoginFormPartial" />
+        </div>
+    </div>
+</div>

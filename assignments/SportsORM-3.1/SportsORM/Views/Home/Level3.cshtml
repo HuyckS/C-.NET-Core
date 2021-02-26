@@ -59,16 +59,6 @@
             @foreach (var pt in @ViewBag.FormerVikingsPlayers.AllPlayers)
             {
 
-
-
-
-
-
-
-
-
-
-
                 {
                     <tr>
                         <td>@ViewBag.FormerVikingsPlayers.TeamName</td>
@@ -91,27 +81,7 @@
             @foreach (var pt in @ViewBag.JacobGrayTeams.AllTeams)
             {
 
-
-
-
-
-
-
-
-
-
-
                 if (@pt.TeamOfPlayer.TeamName != "Colts")
-
-
-
-
-
-
-
-
-
-
 
                 {
                     <tr>
@@ -124,7 +94,7 @@
             }
         </tbody>
     </table>
-    @* <table>
+    <table>
         <thead>
         <tr>
         <th>Team Name</th>
@@ -132,28 +102,18 @@
         </tr>
         </thead>
         <tbody>
-        @foreach (var t in @ViewBag.AllJoshuasAtlanticFed)
-        {
-
-
-
-        if (@t.AllPlayers.PlayerOnTeam.FirstName == "Joshua")
-
-
-
-
-
+        @foreach (var p in @ViewBag.AllJoshuasAtlanticFed)
         {
         <tr>
-        <td>@t.TeamName</td>
-        <td>@t.AllPlayers.PlayerOnTeam.FirstName</td>
+        <td>@p.CurrentTeam.TeamName</td>
+        <td>@p.CurrentTeam.CurrLeague.Name</td>
         </tr>
 
         }
 
         }
         </tbody>
-        </table> *@
+        </table>
     <table>
         <thead>
             <tr>
