@@ -1,0 +1,13 @@
+@model Enthusiast
+<form action="/add-enthusiast/@ViewBag.ThisHobby.HobbyId" method="post">
+    <div>
+        <label asp-for='EnthusiastProficiency'></label>
+        <select id="EnthusiastProficiency" name="EnthusiastProficiency">
+            <option value="Novice">Novice</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Expert">Expert</option>
+        </select>
+        <span asp-validation-for='EnthusiastProficiency' class='validation'></span>
+    </div>
+    <input class="btn btn-info" type="submit" value="Add To Hobbies">
+</form>
