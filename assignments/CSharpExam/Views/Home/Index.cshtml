@@ -3,37 +3,48 @@
 }
 @model CSharpExam.Models.User;
 
-<div class="text-center">
+<div>
+    <h1 class="display-4" style="color:#007BFF">Welcome to the Dojo Activity Center</h1>
     <div class="d-flex">
         <div class="col-lg-6">
-            <h1>Register</h1>
+            <h2>Register</h2>
             <div>
                 <form action="/register" method="post">
                     <input type="hidden" name="CurrentBalance" value="0.00">
                     <div class="form-group">
-                        <label asp-for='FirstName'></label>
+                        <div>
+                            <label asp-for='FirstName'></label>
+                        </div>
                         <input asp-for='FirstName' type='text' />
-                        <span asp-validation-for='FirstName' class='validation'></span>
+                        <span style="color:red" asp-validation-for='FirstName' class='validation'></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for='LastName'></label>
+                        <div>
+                            <label asp-for='LastName'></label>
+                        </div>
                         <input asp-for='LastName' type='text' />
-                        <span asp-validation-for='LastName' class='validation'></span>
+                        <span style="color:red" asp-validation-for='LastName' class='validation'></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for='Email'></label>
+                        <div>
+                            <label asp-for='Email'></label>
+                        </div>
                         <input asp-for='Email' type='text' />
-                        <span asp-validation-for='Email' class='validation'></span>
+                        <span style="color:red" asp-validation-for='Email' class='validation'></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for='Password'></label>
+                        <div>
+                            <label asp-for='Password'></label>
+                        </div>
                         <input asp-for='Password' type='password' />
-                        <span asp-validation-for='Password' class='validation'></span>
+                        <span style="color:red" asp-validation-for='Password' class='validation'></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for='Confirm'></label>
+                        <div>
+                            <label asp-for='Confirm'></label>
+                        </div>
                         <input asp-for='Confirm' type='password' />
-                        <span asp-validation-for='Confirm' class='validation'></span>
+                        <span style="color:red" asp-validation-for='Confirm' class='validation'></span>
                     </div>
                     <div class="form-group">
                         <input class="btn btn-primary" type="submit" value="Sign Up Now!" />

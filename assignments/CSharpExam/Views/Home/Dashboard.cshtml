@@ -1,0 +1,62 @@
+@* ViewBag.CurrentUser *@
+@* ViewBag.Activities *@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="d-flex justify-content-md-between ">
+    <div>
+        <h1 class="display-4" style="color:#007BFF">Dojo Activity Center</h1>
+    </div>
+
+    <h3>Welcome, @ViewBag.CurrentUser.FirstName!</h3>
+    <a href="/logout"><button class="btn btn-primary">Log out</button></a>
+
+</div>
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Activity</th>
+                <th>Date and Time</th>
+                <th>Duration</th>
+                <th>Event Coordinator</th>
+                <th>No. of Participants</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ActivityEvent a in ViewBag.Activities)
+            {
+                <tr>
+                    <td><a href="/activity-details/@a.ActivityEventId">@a.Title</a></td>
+                    <td>@a.Date.ToString("M/d/y") at @a.Time.ToString("h:mm tt") </td>
+                    <td>@a.Duration @a.TimeMeasurement.ToString()</td>
+                    <td>@a.EventCoordinator.FirstName</td>
+                    <td>@a.Participants.Count</td>
+                    <td>
+                        @if (a.EventCoordinator.UserId == ViewBag.CurrentUser.UserId)
+                        {
+                            <form action="/delete/activity/@a.ActivityEventId" method="post">
+                                <input class="btn btn-danger" type="submit" value="Delete">
+                            </form>
+                        }
+                        else if (a.Participants.Any(p => p.UserId == ViewBag.CurrentUser.UserId))
+                        {
+                            <form action="/delete/participant/@a.ActivityEventId" method="post">
+                                <input class="btn btn-warning" type="submit" value="Leave">
+                            </form>
+                        }
+                        else
+                        {
+                            <form action="/add/participant/@a.ActivityEventId" method="post">
+                                <input class="btn btn-info" type="submit" value="Join">
+                            </form>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/activity-form"><button class="btn btn-primary">Add New Activity</button></a>
+</div>

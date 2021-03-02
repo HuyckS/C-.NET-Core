@@ -14402,6 +14402,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Spence\\Desktop\\CodingDojo\\C#\\assignments\\CSharpExam\\Views\\Home\\ActivityForm.cshtml",
+      "TargetPath": "Views\\Home\\ActivityForm.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Spence\\Desktop\\CodingDojo\\C#\\assignments\\CSharpExam\\Views\\Home\\Dashboard.cshtml",
       "TargetPath": "Views\\Home\\Dashboard.cshtml",
       "FileKind": "mvc"
@@ -14409,6 +14414,11 @@
     {
       "FilePath": "c:\\Users\\Spence\\Desktop\\CodingDojo\\C#\\assignments\\CSharpExam\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Spence\\Desktop\\CodingDojo\\C#\\assignments\\CSharpExam\\Views\\Home\\ActivityDetails.cshtml",
+      "TargetPath": "Views\\Home\\ActivityDetails.cshtml",
       "FileKind": "mvc"
     },
     {

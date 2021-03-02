@@ -45,7 +45,7 @@ namespace CSharpExam.Controllers
         {
             if (_context.Users.Any(u => u.Email == newUser.Email))
             {
-                ModelState.AddModelError("Email", "Email invalid");
+                ModelState.AddModelError("Email", "Email in use -- please register with another valid email.");
                 return View("Index");
             }
 
@@ -100,11 +100,126 @@ namespace CSharpExam.Controllers
             if (currentUser != null)
             {
                 ViewBag.CurrentUser = currentUser;
-                //may need to pass something else here in ViewBag
+                ViewBag.Activities = _context.Activities
+                    .Include(a => a.Participants)
+                    .Include(a => a.EventCoordinator)
+                    .OrderBy(a => a.Date);
                 return View();
             }
             return View("Index");
         }
+
+        // View Activity Form
+        [HttpGet("activity-form")]
+        public IActionResult ActivityForm()
+        {
+            return View();
+        }
+
+        // Create Activity
+        [HttpPost("create-activity")]
+        public IActionResult CreateEvent(ActivityEvent newActivityEvent)
+        {
+            User currentUser = GetCurrentUser();
+            if (currentUser != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    newActivityEvent.EventCoordinator = currentUser;
+                    _context.Add(newActivityEvent);
+                    _context.SaveChanges();
+                    return RedirectToAction("ActivityDetails", new { actId = newActivityEvent.ActivityEventId });
+                }
+                return View("ActivityForm");
+            }
+            return View("Index");
+        }
+
+        // View Activity Details
+        [HttpGet("/activity-details/{actId}")]
+        public IActionResult ActivityDetails(int actId)
+        {
+            User currentUser = GetCurrentUser();
+            if (currentUser != null)
+            {
+                ViewBag.ThisActivity = _context.Activities
+                    .Include(a => a.EventCoordinator)//user
+                    .Include(a => a.Participants)//particpant <list>
+                        .ThenInclude(p => p.UserSignedUp)
+                    .FirstOrDefault(a => a.ActivityEventId == actId);
+                ActivityEvent thisActivity = ViewBag.ThisActivity;
+
+                ViewBag.CurrentUser = _context.Users
+                    .Include(u => u.RegisteredFor)
+                    .FirstOrDefault(u => u.UserId == currentUser.UserId);
+
+                ViewBag.SignedUp = thisActivity.Participants.Any(u => u.UserId == currentUser.UserId);
+                return View();
+            }
+            return View("Index");
+        }
+
+        // Add Participant
+        [HttpPost("add/participant/{actId}")]
+        public IActionResult AddParticipant(int actId)
+        {
+            User currentUser = GetCurrentUser();
+            if (currentUser != null)
+            {
+                var newParticipant = new Participant();
+
+                newParticipant.UserId = currentUser.UserId;
+                newParticipant.ActivityEventId = actId;
+                _context.Add(newParticipant);
+                _context.SaveChanges();
+                return RedirectToAction("Dashboard");
+            }
+            return View("Index");
+        }
+
+        // Remove Participant
+        [HttpPost("delete/participant/{actId}")]
+        public IActionResult DeleteParticipant(int actId)
+        {
+            User currentUser = GetCurrentUser();
+            if (currentUser != null)
+            {
+                Participant participantToRemove = _context.Participants
+                    .FirstOrDefault(p => p.ActivityEventId == actId);
+
+                _context.Remove(participantToRemove);
+                _context.SaveChanges();
+                return RedirectToAction("Dashboard");
+            }
+            return View("Index");
+        }
+
+        // Delete Activity
+        [HttpPost("delete/activity/{actId}")]
+        public IActionResult DeleteActivity(int actId)
+        {
+            User currentUser = GetCurrentUser();
+            if (currentUser != null)
+            {
+                ActivityEvent activityToRemove = _context.Activities
+                    .FirstOrDefault(a => a.ActivityEventId == actId);
+                _context.Remove(activityToRemove);
+                _context.SaveChanges();
+                return RedirectToAction("Dashboard");
+
+            }
+            return View("Index");
+        }
+
+
+        // Logout
+        [HttpGet("logout")]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return View("Index");
+        }
+
 
         public IActionResult Privacy()
         {

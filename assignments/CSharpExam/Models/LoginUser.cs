@@ -7,6 +7,7 @@ namespace CSharpExam.Models
     public class LoginUser
     {
         [Required]
+        [EmailAddress]
         [Display(Name = "Email")]
         public string LoginEmail { get; set; }
 

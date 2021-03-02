@@ -1,0 +1,53 @@
+@* ViewBag.ThisActivity *@
+@* ViewBag.CurrentUser *@
+
+@{
+    ViewData["Title"] = "@ViewBag.ThisActivity.Title";
+}
+
+<div class="d-flex justify-content-sm-between">
+    <h1 class="display-4" style="color:#007BFF">Dojo Activity Center</h1>
+    <div>
+        <a href="/dashboard"><button class="btn btn-primary">Home</button></a>
+        <a href="/logout"><button class="btn btn-secondary">Log out</button></a>
+    </div>
+</div>
+<div>
+    <div class="d-flex justify-content-lg-between align-self-center">
+        <h3>@ViewBag.ThisActivity.Title</h3>
+        <div>
+            @if (@ViewBag.ThisActivity.EventCoordinator == @ViewBag.CurrentUser)
+            {
+                <form action="/delete/activity/@ViewBag.ThisActivity.ActivityEventId" method="post">
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                </form>
+            }
+            else
+            {   
+                @if (!@ViewBag.SignedUp)
+                {
+                    <form action="/add/participant/@ViewBag.ThisActivity.ActivityEventId" method="post">
+                        <input class="btn btn-info" type="submit" value="Join">
+                    </form>
+                }
+                else
+                {
+                    <form action="/delete/participant/@ViewBag.ThisActivity.ActivityEventId" method="post">
+                        <input class="btn btn-warning" type="submit" value="Leave">
+                    </form>
+                }
+            }
+        </div>
+    </div>
+    <h4>Event Coordinator: @ViewBag.ThisActivity.EventCoordinator.FirstName</h4>
+    <div class="d-flex">
+        <h4>Description: @ViewBag.ThisActivity.Description</h4>
+    </div>
+    <h4>Participants:</h4>
+    <ul>
+        @foreach (Participant p in @ViewBag.ThisActivity.Participants)
+        {
+            <li>@p.UserSignedUp.FirstName</li>
+        }
+    </ul>
+</div>

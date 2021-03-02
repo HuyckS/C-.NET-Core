@@ -13,10 +13,12 @@ namespace CSharpExam.Models
 
         [Required]
         [Display(Name = "First Name")]
+        [MinLength(2, ErrorMessage = "First Name must be 2 characters or longer!")]
         public string FirstName { get; set; }
 
         [Required]
         [Display(Name = "Last Name")]
+        [MinLength(2, ErrorMessage = "Last Name must be 2 characters or longer!")]
         public string LastName { get; set; }
 
         [EmailAddress]
@@ -37,5 +39,8 @@ namespace CSharpExam.Models
         [Compare("Password")]
         [DataType(DataType.Password)]
         public string Confirm { get; set; }
+
+        public List<ActivityEvent> CreatedActivities { get; set; }
+        public List<Participant> RegisteredFor { get; set; }
     }
 }
