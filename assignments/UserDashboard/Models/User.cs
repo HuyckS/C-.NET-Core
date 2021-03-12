@@ -21,6 +21,12 @@ namespace UserDashboard.Models
         [MinLength(2, ErrorMessage = "Last Name must be 2 characters or longer!")]
         public string LastName { get; set; }
 
+        [NotMapped]
+        public string FullName
+        {
+            get { return FirstName + LastName; }
+        }
+
         [EmailAddress]
         [Required]
         [Display(Name = "Email")]
@@ -40,8 +46,11 @@ namespace UserDashboard.Models
         [DataType(DataType.Password)]
         public string Confirm { get; set; }
 
-        public List<Tasker> UserTaskers { get; set; }
-        public List<Project> ProjectsAssigned { get; set; }
-        public List<Project> ProjectsCreated { get; set; }
+        public List<Project> CreatedProjects { get; set; }
+        public List<Assignment> AssignedProjects { get; set; }
+        public List<Tasker> AssignedTaskers { get; set; }
+        public List<Message> MessagesSent { get; set; }
+        public List<Comment> UserComments { get; set; }
+
     }
 }

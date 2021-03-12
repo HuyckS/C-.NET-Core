@@ -11,6 +11,7 @@ namespace UserDashboard.Models
         [Required]
         public string Title { get; set; }
         [Required]
+        [Display(Name = "Project Description")]
         public string ProjectDescription { get; set; }
 
         [DataType(DataType.Date)]
@@ -19,22 +20,16 @@ namespace UserDashboard.Models
 
         [DataType(DataType.Date)]
         [Required]
+        [Display(Name = "Due Date")]
         public DateTime ProjectDueDate { get; set; }
+
+        public int UserId { get; set; }
+        public User ProjectLead { get; set; }
+        public List<Assignment> AssignedUsers { get; set; }
+        public List<Tasker> ProjectTaskers { get; set; }
+        public List<Message> ProjectMessages { get; set; }
+
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
-
-        //Many Tasks assigned to 1 project
-        public List<Tasker> ProjectTaskerList { get; set; }
-
-        //Many users assigned to project
-        public List<User> ProjectMembers { get; set; }
-
-        //One user that creates project
-        public int UserId { get; set; }
-        public User ProjectCreator { get; set; }
-
-        //Messages for project
-        public int MessageId { get; set; }
-        public List<Message> ProjectMessages { get; set; }
     }
 }

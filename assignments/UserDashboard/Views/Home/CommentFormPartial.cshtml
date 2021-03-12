@@ -1,0 +1,17 @@
+@model Comment;
+
+<div class="mb-auto ml-auto">
+    <div>
+        <input type="hidden" name="UserId" value="@ViewBag.CurrentUser.UserId">
+    </div>
+    <div>
+        <div>
+            <label asp-for='CommentContent'>New Comment</label>
+        </div>
+        <textarea name="CommentContent" id="CommentContent" cols="80" rows="3" placeholder="Enter message here!"></textarea>
+        <span asp-validation-for='CommentContent' style="color:red" class='validation'></span>
+    </div>
+    <div>
+        <input class="btn btn-success" type="submit" value="Comment">
+    </div>
+</div>

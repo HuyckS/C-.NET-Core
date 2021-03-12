@@ -1,0 +1,20 @@
+@model Message;
+
+<form class="text-dark" action="/create-message" method="post">
+    <div>
+        <input type="hidden" name="ProjectId" value="@ViewBag.ThisProject.ProjectId">
+    </div>
+    <div>
+        <input type="hidden" name="SenderId" value="@ViewBag.CurrentUser.UserId">
+    </div>
+    <div>
+        <div>
+            <label asp-for='MessageContent'>New Message</label>
+        </div>
+        <textarea name="MessageContent" id="MessageContent" cols="100" rows="5" placeholder="Enter message here!"></textarea>
+        <span asp-validation-for='MessageContent' style="color:red" class='validation'></span>
+    </div>
+    <div>
+        <input class="btn btn-info" type="submit" value="Post">
+    </div>
+</form>

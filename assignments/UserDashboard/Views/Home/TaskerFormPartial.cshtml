@@ -1,0 +1,35 @@
+@model Tasker;
+
+<form action="/create-tasker/@ViewBag.ThisProject.ProjectId" method="post" class="d-flex justify-content-between">
+    <div class="form-group">
+        <div>
+            <label asp-for='TaskerDueDate'></label>
+        </div>
+        <input asp-for='TaskerDueDate' type='date' />
+        <span asp-validation-for='TaskerDueDate' style="color:red" class='validation'></span>
+    </div>
+    <div>
+        <div>
+            <label asp-for='TaskerDescription'></label>
+        </div>
+        <textarea name="TaskerDescription" id="TaskerDescription" cols="50" rows="1" placeholder="Task goes here."></textarea>
+        <span asp-validation-for='TaskerDescription' style="color:red" class='validation'></span>
+    </div>
+    <div class="form-group">
+        <div>
+            <label asp-for='UserOfTasker'>Assign Team Member (optional):</label>
+        </div>
+        <select id="UserOfTasker" name="UserOfTasker">
+            <option></option>
+            @foreach (User u in @ViewBag.Users)
+            {
+                <option value="@u.FullName">@u.FullName</option>
+            }
+        </select>
+        <span asp-validation-for='UserOfTasker' style="color:red" class='validation'></span>
+    </div>
+    <div class="form-group">
+        <input class="btn btn-info" type="submit" value="Create Task">
+    </div>
+
+</form>

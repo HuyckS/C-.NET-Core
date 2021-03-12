@@ -1,0 +1,103 @@
+@* ViewBag.ThisProject *@
+@* ViewBag.CurrentUser *@
+
+@{
+    ViewData["Title"] = "@ViewBag.ThisProject.Title";
+}
+
+<div>
+    <div class="d-flex justify-content-sm-between align-self-center">
+        <div>
+            <h1 class="text-primary">@ViewBag.ThisProject.Title</h1>
+            <h3 class="text-dark">Description:</h3>
+            <p>@ViewBag.ThisProject.ProjectDescription</p>
+        </div>
+        <div class="text-dark">
+            <h4>Start Date: @ViewBag.ThisProject.ProjectStartDate.ToString("M/d/y")</h4>
+            <h4 class="text-danger">Due Date: @ViewBag.ThisProject.ProjectDueDate.ToString("M/d/y")</h4>
+        </div>
+    </div>
+    <div>
+        <h2 class="text-dark">Tasks</h2>
+        <div>
+            <partial name="TaskerFormPartial" />
+        </div>
+        <div class="d-flex text-light">
+                    <div class="col-6 rounded bg-info p-5 m-1">
+                        <h4 class="text-light">My Active Tasks</h4>
+                        @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
+                        {
+                            @if ((@t.UserOfTasker == @ViewBag.CurrentUser.FullName) && @t.TaskerComplete == false)
+                            {
+                                <form action="/form-check-input/@t.TaskerId" method="post">
+                                    <input type="checkbox" name="TaskerComplete" id="TaskerComplete" value="@t.TaskerComplete">
+                                    <label> @t.TaskerDescription </label>
+                                    <input type="submit" value="Update">
+                                </form>
+                            }
+                        }
+                    </div>
+                    <div class="col-6 rounded bg-secondary p-5 m-1">
+                        <h4 class="text-light">Team Tasks</h4>
+                        @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
+                        {
+                            @if ((@t.UserOfTasker != @ViewBag.CurrentUser.FullName) && @t.TaskerComplete == false)
+                            {
+                                <form action="/form-check-input/@t.TaskerId" method="post">
+                                    <input type="checkbox" name="TaskerComplete" id="TaskerComplete" value="@t.TaskerComplete">
+                                    <label> @t.TaskerDescription </label>
+                                    <input type="submit" value="Update">
+                                </form>
+                            }
+                        }
+                    </div>
+                </div>
+        </div>
+                <div>
+                    <h4 class="text-dark">Complete Tasks</h4>
+                    @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
+                    {
+                        @if ((@t.UserOfTasker != @ViewBag.CurrentUser.FullName) && @t.TaskerComplete == true)
+                        {
+                            <form action="/form-check-input/@t.TaskerId" method="post">
+                                <input type="checkbox" name="TaskerComplete" id="TaskerComplete" value="@t.TaskerComplete">
+                                <label> @t.TaskerDescription </label>
+                                <input type="submit" value="Update">
+                            </form>
+                        }
+                    }
+                </div>
+    </div>
+    <div>
+        <h1 class="text-primary">Message Board</h1>
+        <partial name="MessageFormPartial" />
+        <div class=" col-12 rounded bg-dark text-light p-5 m-1">
+            @foreach (Message m in @ViewBag.ThisProject.ProjectMessages)
+            {
+                <div>
+                    <div class=" mt-2 mr-auto col-10 rounded bg-primary">
+                        <p>@m.CreatedAt.ToString("h:mm tt")</p>
+                        <p>@m.MessageContent</p>
+                        <p>- @m.Sender.FirstName</p>
+                    </div>
+                </div>
+                    @if(@m.CommentsOnMessage != null)
+                    {
+                        @foreach(Comment c in @m.CommentsOnMessage)
+                        {   
+                            <div class="text-right col-10 rounded bg-success ml-auto">
+                                <p>@c.CreatedAt.ToString("h:mm tt")</p>
+                                <p>@c.CommentContent</p>
+                                <p>- @c.CreatorOfComment.FirstName</p>
+                            </div>
+                        }
+                    }
+                <div class="mb-auto ml-auto">
+                    <form action="/create-comment/@m.MessageId" method="post" >
+                        <partial name="CommentFormPartial" />
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+</div>
