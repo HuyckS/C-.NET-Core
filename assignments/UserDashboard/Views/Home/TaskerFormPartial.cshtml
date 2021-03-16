@@ -17,6 +17,20 @@
     </div>
     <div class="form-group">
         <div>
+            <label asp-for='TaskerPriority'>Priority:</label>
+        </div>
+        <select id="TaskerPriority" name="TaskerPriority">
+            <option value="Backlog">Backlog</option>
+            <option value="To Do">To Do</option>
+            <option value="In-progress">In-progress</option>
+            <option value="Verify">Verify</option>
+            <option value="Complete">Complete</option>
+            <option value="Expedite">Expedite</option>
+        </select>
+        <span asp-validation-for='TaskerPriority' style="color:red" class='validation'></span>
+    </div>
+    <div class="form-group">
+        <div>
             <label asp-for='UserOfTasker'>Assign Team Member (optional):</label>
         </div>
         <select id="UserOfTasker" name="UserOfTasker">

@@ -4,49 +4,60 @@
     ViewData["Title"] = "Login Page";
 }
 
-<div>
-    <div class="d-flex justify-content-between">
-        <h1 class="text-primary">Welcome back, @ViewBag.CurrentUser.FirstName!</h1>
-
+<h1 class="text-primary mb-5">Welcome back, @ViewBag.CurrentUser.FirstName!</h1>
+<div class="bg-secondary rounded p-3">
+    <h3 class="text-light">Project Board</h3>
+    <div class="d-flex justify-content-sm-between flex-wrap m-1">
+        @foreach (Project p in @ViewBag.Projects)
+        {
+            <div class="col-2 rounded-sm bg-white border-bottom border-right border-secondary p-2">
+                <h4><a class="text-dark" href="/project-details/@p.ProjectId">@p.Title</a></h4>
+                <p>Days Remaining: @((@p.ProjectDueDate - DateTime.Now).Days)</p>
+                <p>Progress bar</p>
+                <p><a href="/edit/project/@p.ProjectId">Edit</a> | <a>Archive</a></p>
+            </div>
+        }
     </div>
-    <table class="table table-striped table-dark">
+    @* <table class="table table-striped table-dark">
         <thead>
-            <tr>
-                <th>Project</th>
-                <th>Project Due Date</th>
-                <th>Days Remaining</th>
-                <th>Taskers</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+        <th>Project</th>
+        <th>Project Due Date</th>
+        <th>Days Remaining</th>
+        <th>Taskers</th>
+        <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
-            @foreach (Project p in @ViewBag.Projects)
-            {
-                <tr>
-                    <td><a class="text-info" href="/project-details/@p.ProjectId">@p.Title</a></td>
-                    <td>@p.ProjectDueDate.ToString("M/d/y")</td>
-                    <td>@((@p.ProjectDueDate - DateTime.Now).Days)</td>
-                    <td>
-                        @if(@p.ProjectTaskers != null)
-                        {
-                            @foreach (Tasker t in @p.ProjectTaskers)
-                            {
-                                @if (@t.TaskerComplete == false)
-                                {
-                                    <p>@t.TaskerDescription</p>
-                                }
-                            }
-                        }
-                        else
-                        {
-                            <p>No Current Tasks</p>
-                        }
-                    </td>
-                    <td><a href="/edit/project/@p.ProjectId"><button class="btn btn-warning">Edit</button></a> | <a><button class="btn btn-info">Archive</button></a></td>
-                </tr>
-            }
+        @foreach (Project p in @ViewBag.Projects)
+        {
+        <tr>
+        <td><a class="text-info" href="/project-details/@p.ProjectId">@p.Title</a></td>
+        <td>@p.ProjectDueDate.ToString("M/d/y")</td>
+        <td>@((@p.ProjectDueDate - DateTime.Now).Days)</td>
+        <td>
+        @if(@p.ProjectTaskers != null)
+        {
+        @foreach (Tasker t in @p.ProjectTaskers)
+        {
+        @if (@t.TaskerComplete == false)
+        {
+        <p>@t.TaskerDescription</p>
+        }
+        }
+        }
+        else
+        {
+        <p>No Current Tasks</p>
+        }
+        </td>
+        <td><a href="/edit/project/@p.ProjectId"><button class="btn btn-warning">Edit</button></a> | <a><button class="btn
+        btn-info">Archive</button></a></td>
+        </tr>
+        }
         </tbody>
-    </table>
+        </table> *@
+
 </div>
 <div>
     <ul>
@@ -66,5 +77,4 @@
 </div>
 <div>
     <a href="/project-form"><button class="btn btn-primary">Create Project</button></a>
-</div>
 </div>

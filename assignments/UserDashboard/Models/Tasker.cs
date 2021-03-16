@@ -19,6 +19,7 @@ namespace UserDashboard.Models
         [Display(Name = "Description")]
         public string TaskerDescription { get; set; }
 
+        public string TaskerPriority { get; set; }
 
         //Project Connection
         [Display(Name = "Project")]

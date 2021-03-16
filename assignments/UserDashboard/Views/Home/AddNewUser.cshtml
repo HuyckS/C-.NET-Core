@@ -1,0 +1,55 @@
+@{
+    ViewData["Title"] = "Add New User";
+}
+
+@model User;
+<h1>ADMIN CONTROL</h1>
+<div>
+    <h2 class="text-center text-primary">Create a User</h2>
+    <div class="text-dark">
+        <form action="/create-user" method="post" class="d-flex justify-content-around">
+            <div>
+                <div class="form-group">
+                    <div>
+                        <label asp-for='FirstName'></label>
+                    </div>
+                    <input asp-for='FirstName' type='text' />
+                    <span style="color:red" asp-validation-for='FirstName' class='validation'></span>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label asp-for='LastName'></label>
+                    </div>
+                    <input asp-for='LastName' type='text' />
+                    <span style="color:red" asp-validation-for='LastName' class='validation'></span>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label asp-for='Email'></label>
+                    </div>
+                    <input asp-for='Email' type='text' />
+                    <span style="color:red" asp-validation-for='Email' class='validation'></span>
+                </div>
+            </div>
+            <div>
+                <div class="form-group">
+                    <div>
+                        <label asp-for='Password'></label>
+                    </div>
+                    <input asp-for='Password' type='password' />
+                    <span style="color:red" asp-validation-for='Password' class='validation'></span>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label asp-for='Confirm'></label>
+                    </div>
+                    <input asp-for='Confirm' type='password' />
+                    <span style="color:red" asp-validation-for='Confirm' class='validation'></span>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Sign Up Now!" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

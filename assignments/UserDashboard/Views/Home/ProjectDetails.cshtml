@@ -22,11 +22,53 @@
         <div>
             <partial name="TaskerFormPartial" />
         </div>
-        <div class="d-flex text-light">
-                    <div class="col-6 rounded bg-info p-5 m-1">
-                        <h4 class="text-light">My Active Tasks</h4>
+        <div class="d-flex justify-content-between rounded bg-white border-bottom border-right border-secondary  m-2 text-dark">
+                    <div class=" rounded m-3">
+                        <h4 class="border-bottom">Backlog</h4>
                         @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
                         {
+                            @if(t.TaskerPriority == "Backlog" || t.TaskerPriority == null){
+                                <div class=" m-1 rounded-sm border-bottom border-right border-dark bg-info text-light">@t.TaskerDescription</div>
+                            }
+                        }
+                    </div>
+                    <div class=" rounded  m-3">
+                        <h4 class="border-bottom">To Do</h4>
+                        @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
+                        {
+                            @if(t.TaskerPriority == "To Do"){
+                                    <div class="  m-1 rounded-sm border-bottom border-right border-dark bg-primary text-light">@t.TaskerDescription</div>
+                                }
+                        }
+                    </div>
+                    <div class="rounded  m-3">
+                        <h4 class="border-bottom">In-progress</h4>
+                        @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
+                        {
+                            @if(t.TaskerPriority == "In-progress"){
+                                    <div class="  m-1 rounded-sm border-bottom border-right border-dark bg-secondary text-light">@t.TaskerDescription</div>
+                                }
+                        }
+                    </div>
+                    <div class=" rounded m-3">
+                        <h4 class="border-bottom">Verify</h4>
+                        @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
+                        {
+                            @if(t.TaskerPriority == "Verify"){
+                                    <div class=" m-1 rounded-sm border-bottom border-right border-dark bg-warning text-dark">@t.TaskerDescription</div>
+                                }
+                        }
+                    </div>
+                    <div class=" rounded  m-3">
+                        <h4 class="border-bottom">Complete</h4>
+                        @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
+                        {
+                            @if(t.TaskerPriority == "Complete"){
+                                    <div class="  m-1 rounded-sm border-bottom border-right border-dark bg-success text-light">@t.TaskerDescription</div>
+                                }
+                        }
+                    </div>
+                        @* {
                             @if ((@t.UserOfTasker == @ViewBag.CurrentUser.FullName) && @t.TaskerComplete == false)
                             {
                                 <form action="/form-check-input/@t.TaskerId" method="post">
@@ -66,7 +108,8 @@
                             </form>
                         }
                     }
-                </div>
+                </div> *@
+        </div>
     </div>
     <div>
         <h1 class="text-primary">Message Board</h1>
