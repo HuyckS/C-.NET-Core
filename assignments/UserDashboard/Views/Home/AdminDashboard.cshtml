@@ -1,6 +1,35 @@
+@model User;
+
 <div>
     <div>
-        <h3>Manage Team Members</h3>
-        <a><button>Add New</button></a>
+        <h3 class="text-primary">Manage Team Members</h3>
+        <a href="/create-user"><button class="button button-success">+ User</button></a>
+    </div>
+    <div class="table table-striped">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Created At</th>
+                    <th>User Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (User u in @ViewBag.Users)
+                {
+                    <tr>
+                        <td>@u.UserId</td>
+                        <td>@u.FullName</td>
+                        <td>@u.Email</td>
+                        <td>@u.CreatedAt</td>
+                        <td>@u.Status</td>
+                        <td><a href="/edit-user/@u.UserId">Edit</a> | <a href="/delete-user/@u.UserId">Remove</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </div>

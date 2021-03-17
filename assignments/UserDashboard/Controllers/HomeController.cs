@@ -93,6 +93,11 @@ namespace UserDashboard.Controllers
 
             if (ModelState.IsValid)
             {
+                List<User> users = _context.Users
+                    .Any(u => u.Status == "Admin");
+                if(users.Count == 0){
+                    newUser.Status = "Admin";
+                }
                 PasswordHasher<User> Hasher = new PasswordHasher<User>();
                 newUser.Password = Hasher.HashPassword(newUser, newUser.Password);
                 _context.Users.Add(newUser);
@@ -150,6 +155,7 @@ namespace UserDashboard.Controllers
         public IActionResult UserEdit()
         {
             User currentUser = GetCurrentUser();
+            ViewBag.CurrentUser = currentUser;
             if (currentUser != null)
             {
                 return View();
@@ -162,6 +168,7 @@ namespace UserDashboard.Controllers
         public IActionResult UpdateAccount(User updatedUser) // this is coming from the form
         {
             User currentUser = GetCurrentUser();
+            ViewBag.CurrentUser = currentUser;
             if (currentUser != null)
             {
                 currentUser.FirstName = updatedUser.FirstName;
@@ -180,6 +187,7 @@ namespace UserDashboard.Controllers
         [HttpGet("project-form")]
         public IActionResult ProjectForm()
         {
+            ViewBag.CurrentUser = GetCurrentUser();
             return View();
         }
         //Process Create Project
@@ -358,6 +366,7 @@ namespace UserDashboard.Controllers
                 .FirstOrDefault(p => p.ProjectId == projectId);
 
             // passing it as a ViewModel
+            ViewBag.CurrentUser = GetCurrentUser();
             return View(projectToEdit);
         }
         //Update Project

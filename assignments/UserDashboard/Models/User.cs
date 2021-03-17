@@ -12,6 +12,9 @@ namespace UserDashboard.Models
         public int UserId { get; set; }
 
         [Required]
+        public string Status { get; set; }
+
+        [Required]
         [Display(Name = "First Name")]
         [MinLength(2, ErrorMessage = "First Name must be 2 characters or longer!")]
         public string FirstName { get; set; }
