@@ -1,0 +1,75 @@
+@{
+    ViewData["Title"] = "Admin Edit Profile";
+}
+@model User;
+@* ViewBag.CurrentUser *@
+@* ViewBag.SelectedUser *@
+
+<h1>ADMIN CONTROL</h1>
+<div>
+    <h2 class="text-danger">Edit Profile: @ViewBag.SelectedUser.UserId</h2>
+    <div class="text-dark">
+        <form action="/sign-up" method="post" class="d-flex justify-content-around">
+            <div>
+                <div class="form-group">
+                    <div>
+                        <label asp-for='FirstName'></label>
+                    </div>
+                    <input asp-for='FirstName' type='text' value="@ViewBag.SelectedUser.FirstName" />
+                    <span style="color:red" asp-validation-for='FirstName' class='validation'></span>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label asp-for='LastName'></label>
+                    </div>
+                    <input asp-for='LastName' type='text' value="@ViewBag.CurrenSelectedUsertUser.LastName" />
+                    <span style="color:red" asp-validation-for='LastName' class='validation'></span>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label asp-for='Email'></label>
+                    </div>
+                    <input asp-for='Email' type='text' value="@ViewBag.SelectedUser.Email" />
+                    <span style="color:red" asp-validation-for='Email' class='validation'></span>
+                </div>
+            </div>
+            <div>
+                <div class="form-group">
+                    <div>
+                        <label asp-for='Password'></label>
+                    </div>
+                    <input asp-for='Password' type='password' value="@ViewBag.SelectedUser.Password" />
+                    <span style="color:red" asp-validation-for='Password' class='validation'></span>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label asp-for='Confirm'></label>
+                    </div>
+                    <input asp-for='Confirm' type='password' value="@ViewBag.SelectedUser.Password" />
+                    <span style="color:red" asp-validation-for='Confirm' class='validation'></span>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label asp-for="Status"></label>
+                    </div>
+                    <select id="Status" name="Status">
+                        @if (@ViewBag.SelectedUser.Status == "Admin")
+                        {
+                            <option value="@ViewBag.SelectedUser.Status">@ViewBag.SelectedUser.Status</option>
+                            <option value="Member">Member</option>
+                        }
+                        else
+                        {
+                            <option value="@ViewBag.SelectedUser.Status">@ViewBag.SelectedUser.Status</option>
+                            <option value="Admin">Admin</option>
+                        }
+                    </select>
+                    <span style="color:red" asp-validation-for='Status' class='validation'></span>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Update" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

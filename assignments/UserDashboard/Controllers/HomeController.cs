@@ -93,9 +93,9 @@ namespace UserDashboard.Controllers
 
             if (ModelState.IsValid)
             {
-                List<User> users = _context.Users
+                bool admins = _context.Users
                     .Any(u => u.Status == "Admin");
-                if(users.Count == 0){
+                if(!admins){
                     newUser.Status = "Admin";
                 }
                 PasswordHasher<User> Hasher = new PasswordHasher<User>();
@@ -376,18 +376,23 @@ namespace UserDashboard.Controllers
             User currentUser = GetCurrentUser();
             if (currentUser != null)
             {
-                var projectToUpdate = _context.Projects
-                    .FirstOrDefault(p => p.ProjectId == updatedProject.ProjectId);
+                if (ModelState.IsValid)
+                {
+                    var projectToUpdate = _context.Projects
+                        .FirstOrDefault(p => p.ProjectId == updatedProject.ProjectId);
 
 
-                projectToUpdate.Title = updatedProject.Title;
-                projectToUpdate.ProjectDescription = updatedProject.ProjectDescription;
-                projectToUpdate.ProjectStartDate = updatedProject.ProjectStartDate;
-                projectToUpdate.ProjectDueDate = updatedProject.ProjectDueDate;
+                    projectToUpdate.Title = updatedProject.Title;
+                    projectToUpdate.ProjectDescription = updatedProject.ProjectDescription;
+                    projectToUpdate.ProjectStartDate = updatedProject.ProjectStartDate;
+                    projectToUpdate.ProjectDueDate = updatedProject.ProjectDueDate;
+                    projectToUpdate.UpdatedAt = DateTime.Now;
 
-                _context.SaveChanges();
+                    _context.SaveChanges();
 
-                return RedirectToAction("ProjectDetails", new { projectId = updatedProject.ProjectId });
+                    return RedirectToAction("ProjectDetails", new { projectId = updatedProject.ProjectId });
+                }
+                return View("EditProject", new { projectId = updatedProject.ProjectId });
             }
             return View("SignIn");
         }
@@ -407,8 +412,63 @@ namespace UserDashboard.Controllers
             }
             return View("SignIn");
         }
+
+        //Edit User
+        [HttpGet("edit/user/{userId}")]
+        public IActionResult EditUser(int userId)
+        {
+            User currentUser = GetCurrentUser();
+            if (currentUser != null)
+            {
+                User userToEdit = _context.Users
+                    .FirstOrDefault(u => u.UserId == userId);
+
+                ViewBag.CurrentUser = GetCurrentUser();
+                ViewBag.SelectedUser = userToEdit;
+                return View();
+            }
+            return View("SignIn");
+        }
+        //Update User
+        [HttpPost("update-user")]
+        public IActionResult UpdateUser(User updatedUser) // this is coming from the form
+        {
+            User currentUser = GetCurrentUser();
+            if (currentUser != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    var userToUpdate = _context.Users
+                        .FirstOrDefault(u => u.UserId == updatedUser.UserId);
+
+
+                    userToUpdate.FirstName = updatedUser.FirstName;
+                    userToUpdate.LastName = updatedUser.LastName;
+                    userToUpdate.Email = updatedUser.Email;
+                    userToUpdate.Password = updatedUser.Password;
+                    userToUpdate.Status = updatedUser.Status;
+                    userToUpdate.UpdatedAt = DateTime.Now;
+                    _context.SaveChanges();
+
+                    return RedirectToAction("AdminDashboard");
+                }
+                return View("UserEdit", new {userId = updatedUser.UserId});
+            }
+            return View("SignIn");
+        }
         //Admin Dashboard View
-        //
+        [HttpGet("admin-dashboard")]
+        public IActionResult AdminDashboard()
+        {
+            User currentUser = GetCurrentUser();
+            if (currentUser != null)
+            {
+                ViewBag.CurrentUser = currentUser;
+                ViewBag.Users = _context.Users;
+                return View();
+            }
+            return View("SignIn");
+        }
 
         // public IActionResult Privacy()
         // {

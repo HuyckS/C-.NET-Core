@@ -32,7 +32,7 @@
                                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="AdminDashboard">Admin Control</a>
                             </li>
                         }
-                        @if (@ViewBag.CurrentUser.Status == "Admin")
+                        @if (@ViewBag.CurrentUser != null && @ViewBag.CurrentUser.Status == "Admin")
                         {
                             <li class="nav-item text-light">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard</a>

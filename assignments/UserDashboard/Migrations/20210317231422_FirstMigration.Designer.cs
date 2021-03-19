@@ -9,7 +9,7 @@ using UserDashboard.Models;
 namespace UserDashboard.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20210309002840_FirstMigration")]
+    [Migration("20210317231422_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -168,11 +168,17 @@ namespace UserDashboard.Migrations
                     b.Property<DateTime>("TaskerDueDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("TaskerPriority")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserOfTasker")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("TaskerId");
 
@@ -205,6 +211,10 @@ namespace UserDashboard.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -278,11 +288,9 @@ namespace UserDashboard.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("UserDashboard.Models.User", "UserOfTasker")
+                    b.HasOne("UserDashboard.Models.User", null)
                         .WithMany("AssignedTaskers")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

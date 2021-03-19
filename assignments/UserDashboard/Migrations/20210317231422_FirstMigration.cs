@@ -14,6 +14,7 @@ namespace UserDashboard.Migrations
                 {
                     UserId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Status = table.Column<string>(nullable: false),
                     FirstName = table.Column<string>(nullable: false),
                     LastName = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: false),
@@ -118,10 +119,12 @@ namespace UserDashboard.Migrations
                     TaskerComplete = table.Column<bool>(nullable: false),
                     TaskerDueDate = table.Column<DateTime>(nullable: false),
                     TaskerDescription = table.Column<string>(nullable: false),
+                    TaskerPriority = table.Column<string>(nullable: true),
                     ProjectId = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: false),
+                    UserOfTasker = table.Column<string>(nullable: true),
                     CreatedAt = table.Column<DateTime>(nullable: false),
-                    UpdatedAt = table.Column<DateTime>(nullable: false)
+                    UpdatedAt = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -137,7 +140,7 @@ namespace UserDashboard.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(

@@ -8,7 +8,6 @@ C:\Users\Spence\Desktop\CodingDojo\C#\assignments\UserDashboard\obj\Debug\netcor
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\UserDashboard\obj\Debug\netcoreapp3.1\UserDashboard.TagHelpers.input.cache
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\UserDashboard\obj\Debug\netcoreapp3.1\UserDashboard.TagHelpers.output.cache
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\UserDashboard\obj\Debug\netcoreapp3.1\UserDashboard.RazorCoreGenerate.cache
-C:\Users\Spence\Desktop\CodingDojo\C#\assignments\UserDashboard\obj\Debug\netcoreapp3.1\Razor\Views\Home\AddNewUser.cshtml.g.cs
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\UserDashboard\obj\Debug\netcoreapp3.1\Razor\Views\Home\AdminDashboard.cshtml.g.cs
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\UserDashboard\obj\Debug\netcoreapp3.1\Razor\Views\Home\AdminEdit.cshtml.g.cs
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\UserDashboard\obj\Debug\netcoreapp3.1\Razor\Views\Home\Dashboard.cshtml.g.cs
@@ -71,3 +70,4 @@ C:\Users\Spence\Desktop\CodingDojo\C#\assignments\UserDashboard\obj\Debug\netcor
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\UserDashboard\obj\Debug\netcoreapp3.1\Razor\Views\Home\TaskerFormPartial.cshtml.g.cs
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\UserDashboard\obj\Debug\netcoreapp3.1\Razor\Views\Home\EditProject.cshtml.g.cs
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\UserDashboard\obj\Debug\netcoreapp3.1\Razor\Views\Home\CommentFormPartial.cshtml.g.cs
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\UserDashboard\obj\Debug\netcoreapp3.1\Razor\Views\Home\AdminNewUser.cshtml.g.cs

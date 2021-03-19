@@ -212,6 +212,10 @@ namespace UserDashboard.Migrations
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
