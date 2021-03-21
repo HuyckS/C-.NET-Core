@@ -18,62 +18,40 @@
             </div>
         }
     </div>
-    @* <table class="table table-striped table-dark">
-        <thead>
-        <tr>
-        <th>Project</th>
-        <th>Project Due Date</th>
-        <th>Days Remaining</th>
-        <th>Taskers</th>
-        <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (Project p in @ViewBag.Projects)
-        {
-        <tr>
-        <td><a class="text-info" href="/project-details/@p.ProjectId">@p.Title</a></td>
-        <td>@p.ProjectDueDate.ToString("M/d/y")</td>
-        <td>@((@p.ProjectDueDate - DateTime.Now).Days)</td>
-        <td>
-        @if(@p.ProjectTaskers != null)
-        {
-        @foreach (Tasker t in @p.ProjectTaskers)
-        {
-        @if (@t.TaskerComplete == false)
-        {
-        <p>@t.TaskerDescription</p>
-        }
-        }
-        }
-        else
-        {
-        <p>No Current Tasks</p>
-        }
-        </td>
-        <td><a href="/edit/project/@p.ProjectId"><button class="btn btn-warning">Edit</button></a> | <a><button class="btn
-        btn-info">Archive</button></a></td>
-        </tr>
-        }
-        </tbody>
-        </table> *@
-
 </div>
 <div>
-    <ul>
-
-        @foreach (Message m in @ViewBag.UserMessages)
-        {
-            if (@m.Viewed == false)
+    <div>
+        <h1 class="text-primary">Message Board</h1>
+        <partial name="MessageFormPartial" />
+        <div class=" col-12 rounded bg-dark text-light p-5 m-1">
+            @foreach (Message m in @ViewBag.UserMessages)
             {
-                <li>
-                    <p>From: @m.Sender.FirstName</p>
-                    <p>@m.MessageContent</p>
-                    <p><a><button class="btn btn-info">Mark Viewed</button></a> | <a><button class="btn btn-success">Respond</button></a></p>>
-                </li>
+                <div>
+                    <div class=" mt-2 mr-auto col-10 rounded bg-primary">
+                        <p>@m.CreatedAt.ToString("h:mm tt")</p>
+                        <p>@m.MessageContent</p>
+                        <p>- @m.Sender.FirstName</p>
+                    </div>
+                </div>
+                    @if(@m.CommentsOnMessage != null)
+                    {
+                        @foreach(Comment c in @m.CommentsOnMessage)
+                        {   
+                            <div class="text-right col-10 rounded bg-success ml-auto">
+                                <p>@c.CreatedAt.ToString("h:mm tt")</p>
+                                <p>@c.CommentContent</p>
+                                <p>- @c.CreatorOfComment.FirstName</p>
+                            </div>
+                        }
+                    }
+                <div class="mb-auto ml-auto">
+                    <form action="/create-comment/@m.MessageId" method="post" >
+                        <partial name="CommentFormPartial" />
+                    </form>
+                </div>
             }
-        }
-    </ul>
+        </div>
+    </div>
 </div>
 <div>
     <a href="/project-form"><button class="btn btn-primary">Create Project</button></a>

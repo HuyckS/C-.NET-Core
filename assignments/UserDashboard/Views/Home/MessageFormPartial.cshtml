@@ -2,10 +2,20 @@
 
 <form class="text-dark" action="/create-message" method="post">
     <div>
-        <input type="hidden" name="ProjectId" value="@ViewBag.ThisProject.ProjectId">
-    </div>
-    <div>
         <input type="hidden" name="SenderId" value="@ViewBag.CurrentUser.UserId">
+    </div>
+    <div class="form-group">
+        <div>
+            <label asp-for='ProjectWithMessage'>Project:</label>
+        </div>
+        <select id="ProjectWithMessage" name="ProjectWithMessage">
+            <option></option>
+            @foreach (Project p in ViewBag.Projects)
+            {
+                <option value="@p.ProjectId">@p.Title</option>
+            }
+        </select>
+        <span asp-validation-for='ProjectWithMessage' style="color:red" class='validation'></span>
     </div>
     <div>
         <div>

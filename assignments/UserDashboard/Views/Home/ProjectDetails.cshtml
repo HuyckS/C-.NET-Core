@@ -23,124 +23,123 @@
             <partial name="TaskerFormPartial" />
         </div>
         <div class="d-flex justify-content-between rounded bg-white border-bottom border-right border-secondary  m-2 text-dark">
-                    <div class=" rounded m-3">
+                    @* <div class=" rounded m-3" ondrop="drop(event)" ondragover="allowDrop(event)">
                         <h4 class="border-bottom">Backlog</h4>
                         @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
                         {
                             @if(t.TaskerPriority == "Backlog" || t.TaskerPriority == null){
-                                <div class=" m-1 rounded-sm border-bottom border-right border-dark bg-info text-light">@t.TaskerDescription</div>
+                                <div id="@t.TaskerId" draggable="true" ondragstart="drag(event)" class="">@t.TaskerDescription</div>
                             }
                         }
-                    </div>
-                    <div class=" rounded  m-3">
+                    </div> *@
+                    <div id="Stage1" class="rounded m-3" ondrop="drop(event)" ondragover="allowDrop(event)">
                         <h4 class="border-bottom">To Do</h4>
                         @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
                         {
                             @if(t.TaskerPriority == "To Do"){
-                                    <div class="  m-1 rounded-sm border-bottom border-right border-dark bg-primary text-light">@t.TaskerDescription</div>
+                                    <div id="@t.TaskerId" draggable="true" ondragstart="drag(event)" class="ToDo">@t.TaskerDescription</div>
                                 }
                         }
                     </div>
-                    <div class="rounded  m-3">
+                    <div id="Stage2" class="rounded  m-3" ondrop="drop(event)" ondragover="allowDrop(event)">
                         <h4 class="border-bottom">In-progress</h4>
                         @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
                         {
                             @if(t.TaskerPriority == "In-progress"){
-                                    <div class="  m-1 rounded-sm border-bottom border-right border-dark bg-secondary text-light">@t.TaskerDescription</div>
+                                    <div id="@t.TaskerId" draggable="true" ondragstart="drag(event)" class="InProgress">@t.TaskerDescription</div>
                                 }
                         }
                     </div>
-                    <div class=" rounded m-3">
+                    <div id="Stage3" class="rounded m-3" ondrop="drop(event)" ondragover="allowDrop(event)">
                         <h4 class="border-bottom">Verify</h4>
                         @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
                         {
                             @if(t.TaskerPriority == "Verify"){
-                                    <div class=" m-1 rounded-sm border-bottom border-right border-dark bg-warning text-dark">@t.TaskerDescription</div>
+                                    <div id="@t.TaskerId" draggable="true" ondragstart="drag(event)" class="Verify">@t.TaskerDescription</div>
                                 }
                         }
                     </div>
-                    <div class=" rounded  m-3">
+                    <div id="Stage4" class="rounded  m-3" ondrop="drop(event)" ondragover="allowDrop(event)">
                         <h4 class="border-bottom">Complete</h4>
                         @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
                         {
                             @if(t.TaskerPriority == "Complete"){
-                                    <div class="  m-1 rounded-sm border-bottom border-right border-dark bg-success text-light">@t.TaskerDescription</div>
+                                    <div id="@t.TaskerId" draggable="true" ondragstart="drag(event)" class="Complete">@t.TaskerDescription</div>
                                 }
                         }
                     </div>
-                        @* {
-                            @if ((@t.UserOfTasker == @ViewBag.CurrentUser.FullName) && @t.TaskerComplete == false)
-                            {
-                                <form action="/form-check-input/@t.TaskerId" method="post">
-                                    <input type="checkbox" name="TaskerComplete" id="TaskerComplete" value="@t.TaskerComplete">
-                                    <label> @t.TaskerDescription </label>
-                                    <input type="submit" value="Update">
-                                </form>
-                            }
-                        }
-                    </div>
-                    <div class="col-6 rounded bg-secondary p-5 m-1">
-                        <h4 class="text-light">Team Tasks</h4>
-                        @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
-                        {
-                            @if ((@t.UserOfTasker != @ViewBag.CurrentUser.FullName) && @t.TaskerComplete == false)
-                            {
-                                <form action="/form-check-input/@t.TaskerId" method="post">
-                                    <input type="checkbox" name="TaskerComplete" id="TaskerComplete" value="@t.TaskerComplete">
-                                    <label> @t.TaskerDescription </label>
-                                    <input type="submit" value="Update">
-                                </form>
-                            }
-                        }
-                    </div>
-                </div>
         </div>
-                <div>
-                    <h4 class="text-dark">Complete Tasks</h4>
-                    @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
-                    {
-                        @if ((@t.UserOfTasker != @ViewBag.CurrentUser.FullName) && @t.TaskerComplete == true)
-                        {
-                            <form action="/form-check-input/@t.TaskerId" method="post">
-                                <input type="checkbox" name="TaskerComplete" id="TaskerComplete" value="@t.TaskerComplete">
-                                <label> @t.TaskerDescription </label>
-                                <input type="submit" value="Update">
-                            </form>
-                        }
-                    }
-                </div> *@
-        </div>
-    </div>
-    <div>
-        <h1 class="text-primary">Message Board</h1>
-        <partial name="MessageFormPartial" />
-        <div class=" col-12 rounded bg-dark text-light p-5 m-1">
-            @foreach (Message m in @ViewBag.ThisProject.ProjectMessages)
-            {
-                <div>
-                    <div class=" mt-2 mr-auto col-10 rounded bg-primary">
-                        <p>@m.CreatedAt.ToString("h:mm tt")</p>
-                        <p>@m.MessageContent</p>
-                        <p>- @m.Sender.FirstName</p>
-                    </div>
-                </div>
-                    @if(@m.CommentsOnMessage != null)
-                    {
-                        @foreach(Comment c in @m.CommentsOnMessage)
-                        {   
-                            <div class="text-right col-10 rounded bg-success ml-auto">
-                                <p>@c.CreatedAt.ToString("h:mm tt")</p>
-                                <p>@c.CommentContent</p>
-                                <p>- @c.CreatorOfComment.FirstName</p>
-                            </div>
-                        }
-                    }
-                <div class="mb-auto ml-auto">
-                    <form action="/create-comment/@m.MessageId" method="post" >
-                        <partial name="CommentFormPartial" />
-                    </form>
-                </div>
-            }
-        </div>
-    </div>
+<style>
+    .ToDo {
+  margin: 0.5%;
+  border-bottom: 0.5px solid grey;
+  background-color: plum;
+  color: black;
+}
+
+.InProgress {
+  margin: 0.5%;
+  border-bottom: 0.5px solid grey;
+  background-color: lightskyblue;
+  color: black;
+}
+
+.Verify {
+  margin: 0.5%;
+  border-bottom: 0.5px solid grey;
+  background-color: lightgoldenrodyellow;
+  color: black;
+}
+
+.Complete {
+  margin: 0.5%;
+  border-bottom: 0.5px solid grey;
+  background-color: lightgreen;
+  color: black;
+}
+
+.Expedite {
+  margin: 0.5%;
+  border-bottom: 0.5px solid grey;
+  background-color: palevioletred;
+  color: black;
+}
+</style>
+<script>
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        console.log(ev);
+        var data = ev.dataTransfer.getData("text");
+        var task = document.getElementById(data);
+        if(document.getElementById("Stage1").has(task)){
+            task.removeClass('InProgress', 'Verify', 'Complete', 'Expedite');
+            task.addClass('ToDo');
+        };
+        if(document.getElementById("Stage2").has(task)){
+            task.removeClass('ToDo', 'Verify', 'Complete', 'Expedite');
+            task.addClass('InProgress');
+        } 
+        if(document.getElementById("Stage3").has(task)){
+            task.removeClass('ToDo', 'InProgress', 'Complete', 'Expedite');
+            task.addClass('Verify');
+        }
+        if(document.getElementById("Stage4").has(task)){
+            task.removeClass('ToDo', 'InProgress','Verify', 'Expedite');
+            task.addClass('Complete');
+        }
+        if(document.getElementById("Stage5").has(task)){
+            task.removeClass('ToDo', 'InProgress', 'Verify', 'Complete');
+            task.addClass('Expedite');
+        };
+        ev.target.appendChild(task);
+    }
+</script>
 </div>
