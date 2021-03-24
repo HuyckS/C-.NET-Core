@@ -9,6 +9,8 @@ namespace UserDashboard.Models
 
         public string CommentContent { get; set; }
 
+        public string CommentPriority { get; set; }
+
         public int UserId { get; set; }
         public User CreatorOfComment { get; set; }
 

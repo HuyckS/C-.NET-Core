@@ -5,32 +5,24 @@
 }
 
 <h1 class="text-primary mb-5">Welcome back, @ViewBag.CurrentUser.FirstName!</h1>
-<div class="bg-secondary rounded p-3">
-    <h3 class="text-light">Project Board</h3>
-    <div class="d-flex justify-content-sm-between flex-wrap m-1">
-        @foreach (Project p in @ViewBag.Projects)
-        {
-            <div class="col-2 rounded-sm bg-white border-bottom border-right border-secondary p-2">
-                <h4><a class="text-dark" href="/project-details/@p.ProjectId">@p.Title</a></h4>
-                <p>Days Remaining: @((@p.ProjectDueDate - DateTime.Now).Days)</p>
-                <p>Progress bar</p>
-                <p><a href="/edit/project/@p.ProjectId">Edit</a> | <a>Archive</a></p>
-            </div>
-        }
-    </div>
-</div>
 <div>
     <div>
-        <h1 class="text-primary">Message Board</h1>
+        <h1 class="text-primary">Notifications</h1>
         <partial name="MessageFormPartial" />
         <div class=" col-12 rounded bg-dark text-light p-5 m-1">
             @foreach (Message m in @ViewBag.UserMessages)
             {
                 <div>
-                    <div class=" mt-2 mr-auto col-10 rounded bg-primary">
-                        <p>@m.CreatedAt.ToString("h:mm tt")</p>
-                        <p>@m.MessageContent</p>
-                        <p>- @m.Sender.FirstName</p>
+                    <div class="d-flex justify-content-between mt-2 col-10 rounded bg-primary">
+                        <p>@m.CreatedAt.ToString("h:mm tt") @m.Sender.FullName</p>
+                        <div class="d-flex justify-content-between">
+                            <div class="mr-auto">
+                                <p>@m.Subject</p>
+                            </div>
+                            <div>
+                                <p>@m.Priority</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                     @if(@m.CommentsOnMessage != null)
@@ -52,7 +44,21 @@
             }
         </div>
     </div>
-</div>
 <div>
     <a href="/project-form"><button class="btn btn-primary">Create Project</button></a>
+</div>
+<div class="bg-secondary rounded p-3">
+    <h3 class="text-light">Project Board</h3>
+    <div class="d-flex flex-wrap m-1">
+        @foreach (Project p in @ViewBag.UserProjects)
+        {
+            <div class="col-2 rounded-sm bg-white border-bottom border-right border-secondary p-2 mr-3">
+                <h4><a class="text-dark" href="/project-details/@p.ProjectId">@p.Title</a></h4>
+                <p>Days Remaining: @((@p.ProjectDueDate - DateTime.Now).Days)</p>
+                <p>Progress bar</p>
+                <p><a href="/edit/project/@p.ProjectId">Edit</a> | <a>Archive</a></p>
+            </div>
+        }
+    </div>
+</div>
 </div>

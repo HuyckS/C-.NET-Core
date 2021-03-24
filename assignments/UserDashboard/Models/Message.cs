@@ -8,6 +8,8 @@ namespace UserDashboard.Models
         [Key]
         public int MessageId { get; set; }
         public bool Viewed { get; set; }
+        public string Subject { get; set; }
+        public string Priority { get; set; }
 
         [Required]
         [MinLength(3, ErrorMessage = "Must be longer than 3 characters.")]

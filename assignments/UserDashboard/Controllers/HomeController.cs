@@ -136,15 +136,31 @@ namespace UserDashboard.Controllers
                 List<Message> userMessages = new List<Message>();
                 foreach (Message m in messages)
                 {
-                    if (userInfo.AssignedProjects.Any(a => a.ProjectId == m.ProjectId))
+                    if (m.Viewed == false)
                     {
                         userMessages.Add(m);
                     }
                 }
+                var projects = _context.Projects
+                    .Include(p => p.AssignedUsers);
+                List<Project> userProjects = new List<Project>();
+                foreach (Project p in projects)
+                {
+                    if (p.AssignedUsers.Any(a => a.UserForProject == currentUser))
+                    {
+                        userProjects.Add(p);
+                    }
+                }
+                if(userProjects.Count > 0){
+                    ViewBag.UserProjects = userProjects.OrderByDescending(p => p.ProjectDueDate);
+                }
+                else
+                {
+                    ViewBag.UserProjects = userProjects;
+                }
                 ViewBag.Projects = _context.Projects;
-                ViewBag.ProjectsLeading = projectsLeading;
                 ViewBag.CurrentUser = userInfo;
-                ViewBag.UserMessages = userMessages;
+                ViewBag.UserMessages = userMessages.OrderByDescending(m => m.CreatedAt);
                 return View();
             }
             return View("SignIn");
@@ -211,6 +227,7 @@ namespace UserDashboard.Controllers
                     Assignment newAssignment = new Assignment();
                     newAssignment.UserForProject = currentUser;
                     newAssignment.ProjectForUser = newProject;
+                    _context.Add(newAssignment);
                     _context.SaveChanges();
                     // newProject.AssignedUsers.Add(newAssignment);
                     // _context.SaveChanges();
@@ -235,6 +252,8 @@ namespace UserDashboard.Controllers
                     .Include(p => p.ProjectMessages)
                         .ThenInclude(m => m.CommentsOnMessage)
                             .ThenInclude(c => c.CreatorOfComment)
+                    .Include(p => p.AssignedUsers)
+                        .ThenInclude(a => a.UserForProject)
                     .FirstOrDefault(p => p.ProjectId == projectId);
                 ViewBag.CurrentUser = _context.Users
                     .FirstOrDefault(u => u.UserId == currentUser.UserId);
@@ -308,17 +327,21 @@ namespace UserDashboard.Controllers
         [HttpPost("create-message")]
         public IActionResult CreateMessage(Message newMessage)
         {
+            Console.WriteLine("In create message");
             User currentUser = GetCurrentUser();
             if (currentUser != null)
             {
+                Console.WriteLine("Logged in");
                 if (ModelState.IsValid)
                 {
-                    // newMessage.ProjectId = projectId;
+                    Console.WriteLine("Model is valid!");
                     _context.Add(newMessage);
                     _context.SaveChanges();
-                    return RedirectToAction("ProjectDetails", new { projectId = newMessage.ProjectId });
+                    return RedirectToAction("Dashboard");
+                    // return RedirectToAction("ProjectDetails", new { projectId = newMessage.ProjectId });
                 }
-                return View("ProjectDetails");
+                
+                return View("Dashboard");
             }
             return View("SignIn");
         }
@@ -333,9 +356,10 @@ namespace UserDashboard.Controllers
                 {
                     newComment.MessageId = messageId;
                     _context.Add(newComment);
-                    _context.SaveChanges();
                     Message messageOfProject = _context.Messages
                         .FirstOrDefault(m => m.MessageId == messageId);
+                    messageOfProject.Priority = newComment.CommentPriority;
+                    _context.SaveChanges();
                     return RedirectToAction("ProjectDetails", new { projectId = messageOfProject.ProjectId });
                 }
                 return View("ProjectDetails");
@@ -469,7 +493,54 @@ namespace UserDashboard.Controllers
             }
             return View("SignIn");
         }
-
+        //assignment page
+        [HttpGet("assign-user/{userId}")]
+        public IActionResult AdminAssign(int userId)
+        {
+            User currentUser = GetCurrentUser();
+            if(currentUser != null)
+            {
+                ViewBag.CurrentUser = currentUser;
+                ViewBag.UserToAssign = _context.Users
+                    .SingleOrDefault(u => u.UserId == userId);
+                ViewBag.Projects = _context.Projects
+                    .Include(p => p.AssignedUsers)
+                        .ThenInclude(a => a.UserId);
+                return View();
+            }
+            return RedirectToAction("SignIn");
+        }
+        //create assignment
+        [HttpGet("delete-assignment/{userId}")]
+        public IActionResult UnassignUser(int userId)
+        {
+            User currentUser = GetCurrentUser();
+            if(currentUser != null)
+            {
+                Assignment assignmentToRemove = _context.Assignments
+                    .SingleOrDefault(a => a.UserId == userId);
+                _context.Assignments.Remove(assignmentToRemove);
+                _context.SaveChanges();
+                return RedirectToAction("AdminAssign", new {userId = userId});
+            }
+            return RedirectToAction("SignIn");
+        }
+        //delete assignment
+        [HttpGet("create-assignment/{userId}/{projectId}")]
+        public IActionResult AssignUser(int userId, int projectId)
+        {
+            User currentUser = GetCurrentUser();
+            if(currentUser != null)
+            {
+                Assignment newAssignment = new Assignment();
+                newAssignment.UserId = userId;
+                newAssignment.ProjectId = projectId;
+                _context.Add(newAssignment);
+                _context.SaveChanges();
+                return RedirectToAction("AdminAssign", new {userId = userId});
+            }
+            return RedirectToAction("SignIn")
+        }
         // public IActionResult Privacy()
         // {
         //     return View();

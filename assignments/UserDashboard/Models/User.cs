@@ -27,7 +27,7 @@ namespace UserDashboard.Models
         [NotMapped]
         public string FullName
         {
-            get { return FirstName + LastName; }
+            get { return FirstName + " " + LastName; }
         }
 
         [EmailAddress]

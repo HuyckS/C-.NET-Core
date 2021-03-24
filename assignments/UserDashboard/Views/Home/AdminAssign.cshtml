@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Assign @ViewBag.UserToAssign.FirstName";
+}
+
+@model User;
+<div>
+    <h1>Assign @ViewBag.UserToAssign.FirstName</h1>
+    <h3>Current Workload</h3>
+    foreach(Project p in @ViewBag.Projects)
+    {
+    <div>
+        <p>@p.Title</p>
+        @if (@p.AssignedUsers.Any(a => a.UserId == @ViewBag.UserToAssign.UserId))
+        {
+            <a href="/delete-assignment/@ViewBag.UserToAssign.UserId"><button class="button button-warning">Unassign</button></a>
+        }
+        else
+        {
+            <a href="/create-assignment/@ViewBag.UserToAssign.UserId/@p.ProjectId"><button class="button button-success">Assign</button></a>
+        }
+    </div>
+    }
+</div>

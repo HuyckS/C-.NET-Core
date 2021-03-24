@@ -18,49 +18,69 @@
         </div>
     </div>
     <div>
-        <h2 class="text-dark">Tasks</h2>
+        <h3>Team:</h3>
+        @foreach(Assignment a in @ViewBag.ThisProject.AssignedUsers)
+        {
+            <p>@a.UserForProject.FirstName</p>
+        }
+    </div>
+    <div>
+        <h3 class="text-dark">Tasks</h3>
         <div>
             <partial name="TaskerFormPartial" />
         </div>
-        <div class="d-flex justify-content-between rounded bg-white border-bottom border-right border-secondary  m-2 text-dark">
-                    @* <div class=" rounded m-3" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <h4 class="border-bottom">Backlog</h4>
-                        @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
-                        {
-                            @if(t.TaskerPriority == "Backlog" || t.TaskerPriority == null){
-                                <div id="@t.TaskerId" draggable="true" ondragstart="drag(event)" class="">@t.TaskerDescription</div>
+        <div class="d-inline-flex col-12 rounded bg-white border-bottom border-right border-secondary mt-2 text-dark">
+                <div class="col-9 border-right border-secondary">
+                    <div class="d-flex justify-content-around mb-2">
+                        <div id="Stage1" class="rounded col-2 m-1">
+                            <h4 class="text-center border-bottom">To Do</h4>
+                            <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                                @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
+                                {
+                                    @if(t.TaskerPriority == "To Do"){
+                                            <div id="@t.TaskerId" draggable="true" ondragstart="drag(event)" class="ToDo">@t.TaskerDescription</div>
+                                        }
+                                }
+                            </div>
+                        </div>
+                        <div id="Stage2" class="rounded col-2 m-1">
+                            <h4 class="text-center border-bottom">In-progress</h4>
+                            <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                                @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
+                                {
+                                    @if(t.TaskerPriority == "In-progress"){
+                                            <div id="@t.TaskerId" draggable="true" ondragstart="drag(event)" class="InProgress">@t.TaskerDescription</div>
+                                        }
+                                }
+                            </div>
+                        </div>
+                        <div id="Stage3" class="rounded col-2 m-1">
+                            <h4 class="text-center border-bottom">Verify</h4>
+                            <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                                @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
+                                {
+                                    @if(t.TaskerPriority == "Verify"){
+                                            <div id="@t.TaskerId" draggable="true" ondragstart="drag(event)" class="Verify">@t.TaskerDescription</div>
+                                        }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Stage5" class="rounded col-8 m-1 pt-2">
+                        <h4 class="text-center border-bottom">EXPEDITE</h4>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
+                            {
+                                @if(t.TaskerPriority == "Expedite"){
+                                        <div id="@t.TaskerId" draggable="true" ondragstart="drag(event)" class="Expedite">@t.TaskerDescription</div>
+                                    }
                             }
-                        }
-                    </div> *@
-                    <div id="Stage1" class="rounded m-3" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <h4 class="border-bottom">To Do</h4>
-                        @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
-                        {
-                            @if(t.TaskerPriority == "To Do"){
-                                    <div id="@t.TaskerId" draggable="true" ondragstart="drag(event)" class="ToDo">@t.TaskerDescription</div>
-                                }
-                        }
+                        </div>
                     </div>
-                    <div id="Stage2" class="rounded  m-3" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <h4 class="border-bottom">In-progress</h4>
-                        @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
-                        {
-                            @if(t.TaskerPriority == "In-progress"){
-                                    <div id="@t.TaskerId" draggable="true" ondragstart="drag(event)" class="InProgress">@t.TaskerDescription</div>
-                                }
-                        }
-                    </div>
-                    <div id="Stage3" class="rounded m-3" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <h4 class="border-bottom">Verify</h4>
-                        @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
-                        {
-                            @if(t.TaskerPriority == "Verify"){
-                                    <div id="@t.TaskerId" draggable="true" ondragstart="drag(event)" class="Verify">@t.TaskerDescription</div>
-                                }
-                        }
-                    </div>
-                    <div id="Stage4" class="rounded  m-3" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <h4 class="border-bottom">Complete</h4>
+                </div>
+                <div id="Stage4" class="rounded col-2 m-1">
+                    <h4 class="text-center border-bottom">Complete</h4>
+                    <div ondrop="drop(event)" ondragover="allowDrop(event)">
                         @foreach (Tasker t in @ViewBag.ThisProject.ProjectTaskers)
                         {
                             @if(t.TaskerPriority == "Complete"){
@@ -68,13 +88,16 @@
                                 }
                         }
                     </div>
-        </div>
+                </div>
+
+    </div>
 <style>
     .ToDo {
   margin: 0.5%;
   border-bottom: 0.5px solid grey;
   background-color: plum;
   color: black;
+
 }
 
 .InProgress {
@@ -82,6 +105,7 @@
   border-bottom: 0.5px solid grey;
   background-color: lightskyblue;
   color: black;
+
 }
 
 .Verify {
@@ -103,10 +127,20 @@
   border-bottom: 0.5px solid grey;
   background-color: palevioletred;
   color: black;
+  width: 20%;
 }
 </style>
 <script>
-    function allowDrop(ev) {
+    $(".selector").draggable({
+        drag: function(event, ui){
+            ui.position.left = Math.min( 100, ui.position.left );
+        }
+    });
+
+    $( ".selector" ).on( "dragstart", function( event, ui ) {} );
+    $( ".selector" ).on( "dragstop", function( event, ui ) {} );
+
+    @* function allowDrop(ev) {
         ev.preventDefault();
     }
 
@@ -119,27 +153,24 @@
         console.log(ev);
         var data = ev.dataTransfer.getData("text");
         var task = document.getElementById(data);
-        if(document.getElementById("Stage1").has(task)){
+        ev.target.appendChild(task);
+        let $this = $(this);
+        if($this.hasClass('ToDo')){
             task.removeClass('InProgress', 'Verify', 'Complete', 'Expedite');
             task.addClass('ToDo');
-        };
-        if(document.getElementById("Stage2").has(task)){
+        } else if($this.hasClass("InProgress")){
             task.removeClass('ToDo', 'Verify', 'Complete', 'Expedite');
             task.addClass('InProgress');
-        } 
-        if(document.getElementById("Stage3").has(task)){
+        } else if($this.hasClass("Verify")){
             task.removeClass('ToDo', 'InProgress', 'Complete', 'Expedite');
             task.addClass('Verify');
-        }
-        if(document.getElementById("Stage4").has(task)){
+        } else if($this.hasClass("Complete")){
             task.removeClass('ToDo', 'InProgress','Verify', 'Expedite');
             task.addClass('Complete');
-        }
-        if(document.getElementById("Stage5").has(task)){
+        } else {
             task.removeClass('ToDo', 'InProgress', 'Verify', 'Complete');
             task.addClass('Expedite');
         };
-        ev.target.appendChild(task);
-    }
+    } *@
 </script>
 </div>

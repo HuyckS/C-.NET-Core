@@ -1,30 +1,52 @@
 @model Message;
 
 <form class="text-dark" action="/create-message" method="post">
-    <div>
-        <input type="hidden" name="SenderId" value="@ViewBag.CurrentUser.UserId">
-    </div>
-    <div class="form-group">
+    <div class="d-flex justify-content-between">
         <div>
-            <label asp-for='ProjectWithMessage'>Project:</label>
+            <input type="hidden" name="SenderId" value="@ViewBag.CurrentUser.UserId">
         </div>
-        <select id="ProjectWithMessage" name="ProjectWithMessage">
-            <option></option>
-            @foreach (Project p in ViewBag.Projects)
-            {
-                <option value="@p.ProjectId">@p.Title</option>
-            }
-        </select>
-        <span asp-validation-for='ProjectWithMessage' style="color:red" class='validation'></span>
-    </div>
-    <div>
+        <div class="form-group">
+            <div>
+                <label asp-for='ProjectId'>Project:</label>
+            </div>
+            <select id="ProjectId" name="ProjectId">
+                <option></option>
+                @foreach (Project p in ViewBag.Projects)
+                {
+                    <option value="@p.ProjectId">@p.Title</option>
+                }
+            </select>
+            <span asp-validation-for='ProjectId' style="color:red" class='validation'></span>
+        </div>
+        <div class="form-group">
+            <div>
+                <label asp-for='Priority'>Priority:</label>
+            </div>
+            <select id="Priority" name="Priority">
+                <option></option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+                <option value="Resolved">Resolved</option>
+            </select>
+            <span asp-validation-for='Priority' style="color:red" class='validation'></span>
+        </div>
         <div>
-            <label asp-for='MessageContent'>New Message</label>
+            <div>
+                <label asp-for='Subject'>Subject:</label>
+            </div>
+            <textarea name="Subject" id="Subject" cols="25" rows="1"></textarea>
+            <span asp-validation-for='Subject' style="color:red" class='validation'></span>
         </div>
-        <textarea name="MessageContent" id="MessageContent" cols="100" rows="5" placeholder="Enter message here!"></textarea>
-        <span asp-validation-for='MessageContent' style="color:red" class='validation'></span>
+        <div>
+            <div>
+                <label asp-for='MessageContent'>New Message</label>
+            </div>
+            <textarea name="MessageContent" id="MessageContent" cols="70" rows="5" placeholder="Enter message here!"></textarea>
+            <span asp-validation-for='MessageContent' style="color:red" class='validation'></span>
+        </div>
     </div>
-    <div>
-        <input class="btn btn-info" type="submit" value="Post">
+    <div class="ml-auto">
+        <input class="btn btn-info" type="submit" value="Send">
     </div>
 </form>

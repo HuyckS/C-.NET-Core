@@ -71,3 +71,4 @@ C:\Users\Spence\Desktop\CodingDojo\C#\assignments\UserDashboard\obj\Debug\netcor
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\UserDashboard\obj\Debug\netcoreapp3.1\Razor\Views\Home\CommentFormPartial.cshtml.g.cs
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\UserDashboard\obj\Debug\netcoreapp3.1\Razor\Views\Home\AdminNewUser.cshtml.g.cs
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\UserDashboard\obj\Debug\netcoreapp3.1\scopedcss\bundle\UserDashboard.styles.css
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\UserDashboard\obj\Debug\netcoreapp3.1\Razor\Views\Home\AdminAssign.cshtml.g.cs
