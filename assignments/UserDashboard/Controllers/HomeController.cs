@@ -504,8 +504,8 @@ namespace UserDashboard.Controllers
                 ViewBag.UserToAssign = _context.Users
                     .SingleOrDefault(u => u.UserId == userId);
                 ViewBag.Projects = _context.Projects
-                    .Include(p => p.AssignedUsers)
-                        .ThenInclude(a => a.UserId);
+                    .Include(p => p.AssignedUsers);
+                Console.WriteLine(ViewBag.Projects);
                 return View();
             }
             return RedirectToAction("SignIn");
@@ -539,7 +539,7 @@ namespace UserDashboard.Controllers
                 _context.SaveChanges();
                 return RedirectToAction("AdminAssign", new {userId = userId});
             }
-            return RedirectToAction("SignIn")
+            return RedirectToAction("SignIn");
         }
         // public IActionResult Privacy()
         // {
