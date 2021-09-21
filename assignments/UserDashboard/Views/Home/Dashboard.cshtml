@@ -14,7 +14,7 @@
                 <div class="message-group mt-2 col-10 rounded bg-primary">
                     <a href="/view-message/@m.MessageId">
                         <div class="d-inline-flex justify-content-between text-white">
-                            <p class="mr-3">@m.CreatedAt.ToString("h:mm tt") @m.Sender.FullName</p>
+                            @* <p class="mr-3">@m.CreatedAt.ToString("h:mm tt") @m.Sender.FullName</p> *@
                             <p class="mr-3">@m.Subject</p>
                             <p class="mr-3">@m.Priority</p>
                         </div>
@@ -25,7 +25,7 @@
         <nav>
             <ul class="pagination pagination-lg">
                 <li class="disabled mr-3">
-                    <a id="previous-page" href="" aria-label="Previous">
+                    <a id="previous-page" href="javascript:void(0)" aria-label="Previous">
                         <span aria-hidden="true">&laquo</span>
                         <span class="sr-only">Previous</span>
                     </a>
@@ -69,6 +69,7 @@
                     $("#addProjectLetters").addClass("text-white");
                 }
             );
+
             var numberOfMessages = $('#loop .message-group').length;
             var limitPerPage = 5;
             $("#loop .message-group:gt(" + (limitPerPage - 1) + ")").hide();

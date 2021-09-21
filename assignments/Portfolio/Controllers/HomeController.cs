@@ -11,6 +11,12 @@ namespace Portfolio.Controllers
             return View("Home");
         }
 
+        [HttpGet("/about")]
+        public ViewResult About()
+        {
+            return View("About");
+        }
+
         [HttpGet("/projects")]
         public ViewResult Projects()
         {

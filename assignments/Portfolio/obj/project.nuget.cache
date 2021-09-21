@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "xwhRRrpwMdUoIs8I7njOHorX4C7ZQFmqg5uUI3Af1K+Wttd4YxQ2jeWHtiBm+v2SsbYlG4nZfh192wgPTfw5Yw==",
+  "dgSpecHash": "1KXofg8KM1P+ZbqTK2MqZfURwvsT8yRrJlIZHIbjjLWFxoqUNQKmN3vEJ64fw8DtRCepR58NY43kyPY0ZnJCmw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Spence\\Desktop\\CodingDojo\\C#\\assignments\\Portfolio\\Portfolio.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Spence\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\Spence\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.13\\microsoft.netcore.app.host.win-x64.3.1.13.nupkg.sha512"
+  ],
   "logs": []
 }

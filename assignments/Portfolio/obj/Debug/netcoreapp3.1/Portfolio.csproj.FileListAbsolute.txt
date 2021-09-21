@@ -1,6 +1,5 @@
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\Portfolio\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\Portfolio\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\Spence\Desktop\CodingDojo\C#\assignments\Portfolio\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\Portfolio\bin\Debug\netcoreapp3.1\Portfolio.exe
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\Portfolio\bin\Debug\netcoreapp3.1\Portfolio.deps.json
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\Portfolio\bin\Debug\netcoreapp3.1\Portfolio.runtimeconfig.json
@@ -31,3 +30,5 @@ C:\Users\Spence\Desktop\CodingDojo\C#\assignments\Portfolio\obj\Debug\netcoreapp
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\Portfolio\obj\Debug\netcoreapp3.1\Razor\Views\Home\Home.cshtml.g.cs
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\Portfolio\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
 C:\Users\Spence\Desktop\CodingDojo\C#\assignments\Portfolio\obj\Debug\netcoreapp3.1\Razor\Views\Home\Projects.cshtml.g.cs
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\Portfolio\obj\Debug\netcoreapp3.1\scopedcss\bundle\Portfolio.styles.css
+C:\Users\Spence\Desktop\CodingDojo\C#\assignments\Portfolio\obj\Debug\netcoreapp3.1\Razor\Views\Home\About.cshtml.g.cs
