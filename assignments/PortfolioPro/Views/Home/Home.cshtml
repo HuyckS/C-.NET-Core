@@ -10,37 +10,59 @@
 </head>
 
 <body>
-    <div class="content">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="~/static/wireframe_example.png" alt="First slide">
+    <section class="section-banner">
+        <div class="content mb-2">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner mb-6">
+                    <div class="carousel-item active">
+                        <a href=""><img class="d-block w-100" src="~/static/wireframe_example.png" alt="First slide"></a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href=""><img class="d-block w-100" src="~/static/landing_page.png" alt="Second slide"></a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href=""><img class="d-block w-100" src="~/static/schedule_form.png" alt="Third slide"></a>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="~/static/landing_page.png" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="~/static/schedule_form.png" alt="Third slide">
-                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
-    </div>
-    <div class="quote">
-        <h1>Quote</h1>
-    </div>
+    </section>
+    <section class="section-panels">
+        <div class="row d-inline-flex justify-content-center">
+            <div class="panel__box col-3 rounded text-center mx-3 p-2 border-bottom box-shadow mb-3">
+                <img src="~/static/problem_solving_icon.png" alt="icon" class="panel__image">
+                <h3 class="panel__heading">Problem-solver</h3>
+                <p class="panel__desc">Checkout my work practicing algorithms on GitHub!</p>
+            </div>
+            <div class="panel__box col-3 rounded text-center mx-3 p-2 border-bottom box-shadow mb-3">
+                <img src="~/static/team_icon.png" alt="icon" class="panel__image">
+                <h3 class="panel__heading">Team-oriented</h3>
+                <p class="panel__desc">As a veteran, doing things as a team is a way of life -- from missile operations to full-stack engineering, I'm
+                    ready to support my team!
+                </p>
+            </div>
+            <div class="panel__box col-3 rounded text-center mx-3 p-2 border-bottom box-shadow mb-3">
+                <img src="~/static/learn_icon.png" alt="icon" class="panel__image">
+                <h3 class="panel__heading">Learner</h3>
+                <p class="panel__desc">Always looking to learn something new and build my knowledge and experience. I'm a life long learner and I want
+                    to join a community that values learning. See what I'm learning now on my skills page.
+                </p>
+            </div>
+        </div>
+    </section>
 
 
 </body>
