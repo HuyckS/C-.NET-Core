@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <section class="section-banner">
+    <section class="section-banner mt-5">
         <div class="content mb-2">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -19,14 +19,26 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner mb-6">
-                    <div class="carousel-item active">
-                        <a href=""><img class="d-block w-100" src="~/static/wireframe_example.png" alt="First slide"></a>
+                    <div class="banner-img carousel-item active">
+                        <a href=""><img class="d-block w-100" src="~/static/wireframe_example_2.png" alt="First slide"></a>
+                        <div class="caption carousel-caption d-none d-md-block">
+                            <h5>Wireframes for easy project development</h5>
+                            <p>Checkout the projects tab for a few examples</p>
+                        </div>
                     </div>
-                    <div class="carousel-item">
+                    <div class="banner-img carousel-item">
+                        <a href=""><img class="d-block w-100" src="~/static/hydrofarm_landing.png" alt="Third slide"></a>
+                        <div class="caption carousel-caption d-none d-md-block">
+                            <h5>Styling to fit your application</h5>
+                            <p>Landing page for Hyrdoponic Farm e-commerce app</p>
+                        </div>
+                    </div>
+                    <div class="banner-img carousel-item">
                         <a href=""><img class="d-block w-100" src="~/static/landing_page.png" alt="Second slide"></a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href=""><img class="d-block w-100" src="~/static/schedule_form.png" alt="Third slide"></a>
+                        <div class="caption carousel-caption d-none d-md-block ">
+                            <h5>Features designed to help your business</h5>
+                            <p>View Auto Repair Shop project for more info on scheduling form</p>
+                        </div>
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -41,20 +53,23 @@
         </div>
     </section>
     <section class="section-panels">
+        <div class="section-title text-center mt-5 mb-3">
+            <h1>About Me</h1>
+        </div>
         <div class="row d-inline-flex justify-content-center">
-            <div class="panel__box col-3 rounded text-center mx-3 p-2 border-bottom box-shadow mb-3">
+            <div class="panel__box panel__box-1 col-3 rounded text-center mx-3 p-2 border-bottom box-shadow mb-3">
                 <img src="~/static/problem_solving_icon.png" alt="icon" class="panel__image">
                 <h3 class="panel__heading">Problem-solver</h3>
                 <p class="panel__desc">Checkout my work practicing algorithms on GitHub!</p>
             </div>
-            <div class="panel__box col-3 rounded text-center mx-3 p-2 border-bottom box-shadow mb-3">
+            <div class="panel__box panel__box-2 col-3 rounded text-center mx-3 p-2 border-bottom box-shadow mb-3">
                 <img src="~/static/team_icon.png" alt="icon" class="panel__image">
                 <h3 class="panel__heading">Team-oriented</h3>
                 <p class="panel__desc">As a veteran, doing things as a team is a way of life -- from missile operations to full-stack engineering, I'm
                     ready to support my team!
                 </p>
             </div>
-            <div class="panel__box col-3 rounded text-center mx-3 p-2 border-bottom box-shadow mb-3">
+            <div class="panel__box panel__box-3 col-3 rounded text-center mx-3 p-2 border-bottom box-shadow mb-3">
                 <img src="~/static/learn_icon.png" alt="icon" class="panel__image">
                 <h3 class="panel__heading">Learner</h3>
                 <p class="panel__desc">Always looking to learn something new and build my knowledge and experience. I'm a life long learner and I want
@@ -63,7 +78,35 @@
             </div>
         </div>
     </section>
-
+    <section class="section-summary">
+        <div class="summary d-flex justify-content-lg-between mt-5">
+            <div class="summary__left">
+                <img class="profile-pic" src="~/static/professional_pic_new.jpg" height='300px' width='300px' alt="Spencer Huyck">
+            </div>
+            <div class="summary__right px-3">
+                <p>Hi, my name is <strong>Spencer Huyck</strong> and I am a software developer in Tacoma, Washington. My journey in coding began about
+                    two years ago
+                    when I transitioned from active duty Air Force to the Reserves. Tech had never really been on my radar as a potential career, but
+                    with support from my wife and a few friends -- I tried coding and loved it! The creativity, problem solving, and community impact
+                    involed with development were game changers for me and I decided to learn more. After taking several courses in JavaScript, I took
+                    on a full-stack immersive program where I learned 3 different languages and frameworks and I continue to build applications with
+                    them today. <strong>I love being able to create applications that help out the community and that enable business owners to share
+                        their
+                        stories, talents, and products.</strong> </p>
+                <p>My time in the military instilled some very important skills in me. First, <strong>adaptability</strong> -- you never know what you
+                    will be working
+                    on, what teams you will join, nor the problems you will face. The Air Force gave me the opportunity to learn about missile
+                    operations (completely different than what I had studied) and I had to adapt to become an operations supervisor in a no-fail
+                    mission. After a ton of practice, studying, and hard work; I eventually became an instructor. I have always had a <strong>love for
+                        learning</strong> and becoming an instructor opened my eyes to just how much I don't know and motivated me to learn something
+                    new from my
+                    students and fellow instructors everyday. Lastly, as an officer, I was expected to have an answer, and not just any answer; but
+                    the correct one. I didn't always have an answer, but I learned to <strong>problem-solve</strong> by taking the information I had
+                    and making a
+                    decision. These three skills have prepared me for working in software development and being a valuable member of any team.</p>
+            </div>
+        </div>
+    </section>
 
 </body>
 

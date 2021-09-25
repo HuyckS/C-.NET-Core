@@ -15,25 +15,14 @@
             <h1>Contact Me!</h1>
         </div>
         <div class="content">
-            <form class="contact-form d-flex justify-content-sm-around">
+            <form class="contact-form d-flex justify-content-sm-around" action="mailto:huycksl@gmail.com?subject=Portfolio Contact" method="post"
+                enctype="text/plain">
                 <div class="left-form">
-                    <div class="form-group">
-                        <div>
-                            <label>Name:</label>
-                        </div>
-                        <input type="text" />
-                    </div>
                     <div class="form-group">
                         <div>
                             <label>Email:</label>
                         </div>
                         <input type="text" />
-                    </div>
-                    <div class="form-group">
-                        <div>
-                            <label>Phone:</label>
-                        </div>
-                        <input type="tel" />
                     </div>
                 </div>
                 <div class="right-form">
@@ -41,7 +30,7 @@
                         <div>
                             <label for="message">Message:</label>
                         </div>
-                        <textarea name="message" rows="5" col="50"></textarea>
+                        <textarea name="message" rows="5" col="150"></textarea>
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Send">
@@ -49,10 +38,14 @@
                 </div>
             </form>
     </section>
-    <section class="section-otherLinks">
+    <section class="section-otherLinks mt-4">
         <h3 class="text-center">Connect with me or check out my code here:</h3>
-        <h4>LinkedIn: <a href="http://www.linkedin.com/in/spencer-l-huyck">http://www.linkedin.com/in/spencer-l-huyck</a></h4>
-        <h4>GitHub: <a href="http://https://github.com/HuyckS">https://github.com/HuyckS</a></h4>
+        <div class="d-flex justify-content-around mt-5 p-2">
+            <a class="connect-link" href="http://www.linkedin.com/in/spencer-l-huyck"><img src="/static/linkedin.png" alt="LinkedIn" height="150px"
+                    width="150px"></a>
+            <a class="connect-link" href="http://https://github.com/HuyckS"><img src="/static/github.png" alt="GitHub" height="150px"
+                    width="150px"></a>
+        </div>
     </section>
     </div>
 </body>

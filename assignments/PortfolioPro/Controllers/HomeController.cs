@@ -18,10 +18,10 @@ namespace PortfolioPro.Controllers
             return View("Home");
         }
 
-        [HttpGet("/about")]
-        public ViewResult About()
+        [HttpGet("/resume")]
+        public ViewResult Resume()
         {
-            return View("About");
+            return View("Resume");
         }
 
         [HttpGet("/projects")]

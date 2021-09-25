@@ -60,6 +60,7 @@ html {
 }
 
 body {
+  margin-top: 100px;
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
@@ -69,4 +70,192 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+/* Home classes
+-------------------------------------------------------- */
+.section-banner {
+  height: 75vh;
+}
+
+.caption {
+  position: relative;
+  left: 0;
+  top: 0;
+  background-color: #495057;
+}
+
+.panel__box {
+  margin: 15px;
+  opacity: 0.7;
+  transition: 0.4s;
+}
+
+.panel__box:hover,
+.panel__box:active {
+  opacity: 1;
+  transform: scale(1.1);
+}
+.panel__box-1 {
+  background-image: linear-gradient(to right, #38d9a9, #c3fae8);
+}
+
+.panel__box-2 {
+  background-image: linear-gradient(to right, #ffe066, #fff9db);
+}
+
+.panel__box-3 {
+  background-image: linear-gradient(to right, #74c0fc, #e7f5ff);
+}
+
+/* Resume classes
+-------------------------------------------------------- */
+
+.section-resume {
+  border: 1px solid black;
+  padding: 25px;
+}
+.resume__header {
+  text-align: center;
+}
+.resume-category {
+}
+.resume-category__title {
+  border-bottom: 1px solid black;
+}
+
+.resume-block__description {
+  font-size: 18px;
+}
+.resume-block__title-box {
+  width: 100%;
+  padding: 5px;
+  display: inline-flex;
+  justify-content: space-between;
+}
+.resume-block__title {
+  font-weight: bold;
+}
+.resume-block__year {
+  font-weight: bold;
+}
+.resume-block__sub-title {
+  font-style: italic;
+}
+
+/* Contact classes
+-------------------------------------------------------- */
+.connect-link {
+  padding: 5px;
+  transition: 0.3s;
+  box-shadow: 0 1.5rem 4rem rgba(black, 0.35);
+}
+
+.connect-link:hover,
+.connect-link:active {
+  transform: scale(1.1);
+}
+
+/* Project classes
+-------------------------------------------------------- */
+.project__description {
+  padding-right: 15px;
+}
+
+.popup-link {
+  text-decoration: none;
+  color: black;
+}
+
+.popup-link:hover,
+.popup-link:active {
+  text-decoration: none;
+  color: black;
+  box-shadow: 0 1.5rem 4rem rgba(black, 0.35);
+}
+
+.popup-link__content {
+  transition: all 0.3s;
+  padding: 10px;
+}
+
+.popup-link__content:hover,
+.popup-link__content:active {
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(black, 0.35);
+}
+
+.popup {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(black, 0.75);
+  z-index: 100;
+  visibility: hidden;
+}
+
+.popup:target {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s;
+}
+.popup-close {
+  color: black;
+  position: absolute;
+  top: 2.5rem;
+  right: 2.5rem;
+  font-size: 3rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s;
+}
+
+.popup-close:hover,
+.popup-close:visited {
+  transform: scale(1.1);
+  color: red;
+}
+.popup-content {
+  width: 75%;
+  background-color: white;
+  box-shadow: 0 2rem 4rem rgba(black, 0.2);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 3px;
+}
+
+/* Skills classes
+-------------------------------------------------------- */
+.skills__box {
+  opacity: 0.7;
+  transition: 0.4s;
+}
+
+.skills__box:hover,
+.skills__box:active {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.skills__box-1 {
+  background-image: linear-gradient(to right, #38d9a9, #c3fae8);
+}
+
+.skills__box-2 {
+  background-image: linear-gradient(to right, #ffe066, #fff9db);
+}
+
+.skills__box-3 {
+  background-image: linear-gradient(to right, #74c0fc, #e7f5ff);
+}
+
+.skills__box-4 {
+  background-image: linear-gradient(to right, #e599f7, #f8f0fc);
 }
