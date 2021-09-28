@@ -13,13 +13,15 @@
     <section class="section-projects">
         <div class="section-title text-center">
             <h1>Checkout my projects!</h1>
+            <h4>(click project for details)</h4>
         </div>
         <a class="popup-link" data-toggle="modal" data-target="#popup1">
             <div class="popup-link__content project d-flex justify-content-lg-between mt-2">
                 <div class="project__left">
                     <h1 class="project__title">Auto Repair Shop</h1>
-                    <p class="project__tools">Built with: MySQL, Express, React, Node.js, Sequelize, HTML, JavaScript, SASS, Bcrypt, JSON Web Token,
-                        Email.js, AWS, Ubuntu, Nginx </p>
+                    <p class="project__tools"><strong>Built with: MySQL, Express, React, Node.js, Sequelize, HTML, JavaScript, SASS, Bcrypt, JSON Web
+                            Token,
+                            Email.js, AWS, Ubuntu, Nginx </strong></p>
                     <p class="project__description">A deployed, client facing business appointment application built with partner Vic Gargurevich for
                         an
                         auto repair shop in Los Angeles, CA. Our application uses a MySQL database to capture appointment information for clients that
@@ -34,11 +36,11 @@
                 </div>
             </div>
         </a>
-        <a class="popup-link" href="#popup2">
+        <a class="popup-link" data-toggle="modal" data-target="#popup2">
             <div class="popup-link__content project d-flex justify-content-lg-between mt-2">
                 <div class="project__left">
                     <h1 class="project__title">Hydroponic Farm Shop</h1>
-                    <p class="project__tools">Built with: Django, Flask, Python, SQLite, HTML, SASS, Bcrypt, Stripe</p>
+                    <p class="project__tools"><strong>Built with: Django, Flask, Python, SQLite, HTML, SASS, Bcrypt, Stripe</strong></p>
                     <p class="project__description">A dynamic and easily customizable e-commerce application that uses a Model-View-Template (MVT) to
                         organize farm fresh products for simple and easy online shopping. Integrated with Stripe for safe and secure payment
                         transactions
@@ -46,36 +48,42 @@
                         beautifully displayed using SASS components that can be quickly updated to change the style of this site.</p>
                 </div>
                 <div class="project__image align-self-center">
-                    <img src="~/static/wireframe_example.png" alt="project 1" width='400px' height='auto'>
+                    <img src="~/static/hydrofarm_landing.png" alt="project 1" width='400px' height='auto'>
                 </div>
             </div>
         </a>
-        <a class="popup-link" href="#popup3">
+        <a class="popup-link" data-toggle="modal" data-target="#popup3">
             <div class="popup-link__content project d-flex justify-content-lg-between mt-2">
                 <div class="project__left">
                     <h1 class="project__title">Paw Print</h1>
-                    <p class="project__tools">Built with: MongoDB, Express, React, Node.js, HTML, SASS </p>
+                    <p class="project__tools"><strong>Built with: MongoDB, Express, React, Node.js, HTML, SASS </strong></p>
                     <p class="project__description">A social media and organization application designed to easily connect with pet organizations and
                         friends for important information sharing about your pet. If you are taking your pet to a new vet or daycare -- shot records
                         and other pertinent informtion can easily be shared through connecting with the organization on the app. A built in chat
-                        function allows you to monitor your pet when away, while also tracking notifications/reminders for medications, shots, and
-                        birthdays when they are home. Google Maps api included to filter closest emergency veterinarians when traveling. Leverages
+                        function will be incorporated to allow you to monitor your pet when away, while also tracking notifications/reminders for
+                        medications, shots, and
+                        birthdays when they are home. Google Maps api will be included to filter closest emergency veterinarians when traveling.
+                        Leverages
                         React single-page application functioning for seemless updates and scalability.</p>
                 </div>
                 <div class="project__image align-self-center">
-                    <img src="~/static/paw_print_dashboard.png" alt="project 1" width='400px' height='auto'>
+                    <img src="~/static/paw_print_landing.png" alt="project 1" width='400px' height='auto'>
                 </div>
             </div>
         </a>
-        <a class="popup-link" href="#popup4">
+        <a class="popup-link" data-toggle="modal" data-target="#popup4">
             <div class="popup-link__content project d-flex justify-content-lg-between mt-2">
                 <div class="project__left">
                     <h1 class="project__title">Team Connect</h1>
-                    <p class="project__tools">Built with: MongoDB, Express, React, Node.js, HTML, Bootstrap</p>
-                    <p class="project__description">Description here</p>
+                    <p class="project__tools"><strong>Built with: MySQL, ASP.NET Core, C#, jQuery, HTML, CSS, Bootstrap</strong></p>
+                    <p class="project__description">An interactive status tracker for professional teams that operates like a kanban board. Styling
+                        and
+                        functionality still in-progress. App will have basic CRUD functionality for projects and users for easy set-up and tracking of
+                        important projects. Each project display will show tasks and where they are at in the process of completion. Teams will be
+                        able to move tasks from column to column with jQuery for seemless updates to the database.</p>
                 </div>
                 <div class="project__image align-self-center">
-                    <img src="~/static/team_connect_dashboard.png" alt="project 1" width='400px' height='auto'>
+                    <img src="~/static/team_connect_landing.png" alt="project 1" width='400px' height='auto'>
                 </div>
             </div>
         </a>
@@ -84,9 +92,192 @@
 
 <div class="modal popup" id="popup1">
     <div class="modal-content popup-content">
-        <h1>Hello There</h1>
-        <a data-toggle="modal" data-target="section-projects" class="popup-close">&times;</a>
+        <div class="close-box">
+            <a data-dismiss="modal" class="popup-close">&times;</a>
+        </div>
+        <div class="project-details__box">
+            <div id="carousel_1" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel_1" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel_1" data-slide-to="1"></li>
+                    <li data-target="#carousel_1" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner mb-6">
+                    <div class="banner-img carousel-item text-center active">
+                        <img src="~/static/admin_page_wireframe.png" alt="Project Feature" height="500px" width="auto">
+                        <div class="caption carousel-caption d-none d-md-block">
+                            <h5>Wireframe for scheduled appointment search on admin platform.</h5>
+                            <p>Designed for record keeping and easy look-up for current and past appoinments.</p>
+                        </div>
+                    </div>
+                    <div class="banner-img carousel-item text-center">
+                        <img src="~/static/schedule_form.png" alt="Project Feature" height="500px" width="auto">
+                        <div class="caption carousel-caption d-none d-md-block">
+                            <h5>Schedule Form</h5>
+                            <p>Automatically removes times already scheduled to prevent over-booking.</p>
+                        </div>
+                    </div>
+                    <div class="banner-img carousel-item text-center">
+                        <img src="~/static/auto_shop_api.png" alt="Project Feature" height="500px" width="auto">
+                        <div class="caption carousel-caption d-none d-md-block ">
+                            <h5>Google API</h5>
+                            <p>Google API included for fast direction and map visual.</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carousel_1" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel_1" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="modal popup" id="popup2">
+    <div class="modal-content popup-content">
+        <div class="close-box">
+            <a data-dismiss="modal" class="popup-close">&times;</a>
+        </div>
+        <div class="project-details__box">
+            <div id="carousel_2" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel_2" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel_2" data-slide-to="1"></li>
+                    <li data-target="#carousel_2" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner mb-6">
+                    <div class="banner-img carousel-item text-center active">
+                        <img src="~/static/hydrofarm_landing.png" alt="Project Feature" height="500px" width="auto">
+                        <div class="caption carousel-caption d-none d-md-block">
+                            <h5>Landing Page</h5>
+                            <p>Styling completed using block-element-modifier in SASS making it easy to follow and change for future updates.</p>
+                        </div>
+                    </div>
+                    <div class="banner-img carousel-item text-center">
+                        <img src="~/static/product_example.png" alt="Project Feature" height="500px" width="auto">
+                        <div class="caption carousel-caption d-none d-md-block">
+                            <h5>Product Specific Search</h5>
+                            <p>Products added to the database have multiple fields of input, which includes a category tag that narrows down seaching
+                                and product display.</p>
+                            <p>Note -- images are hard-coded in, but will be able to be uploaded to the database in the future.</p>
+                        </div>
+                    </div>
+                    <div class="banner-img carousel-item text-center">
+                        <img src="~/static/stripe_example.png" alt="Project Feature" height="500px" width="auto">
+                        <div class="caption carousel-caption d-none d-md-block ">
+                            <h5>Stripe Interface</h5>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carousel_2" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel_2" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal popup" id="popup3">
+    <div class="modal-content popup-content">
+        <div class="close-box">
+            <a data-dismiss="modal" class="popup-close">&times;</a>
+        </div>
+        <div class="project-details__box">
+            <div id="carousel_3" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel_3" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel_3" data-slide-to="1"></li>
+                    <li data-target="#carousel_3" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner mb-6">
+                    <div class="banner-img carousel-item text-center active">
+                        <img src="~/static/paw_print_pic.png" alt="Project Feature" height="500px" width="auto">
+                        <div class="caption carousel-caption d-none d-md-block">
+                            <h5>Middle Section of Landing Page</h5>
+                            <p>Lot's of functionality with hovering makes the page very interactive.</p>
+                        </div>
+                    </div>
+                    <div class="banner-img carousel-item text-center">
+                        <img src="~/static/wireframe_example_2.png" alt="Project Feature" height="500px" width="auto">
+                        <div class="caption carousel-caption d-none d-md-block">
+                            <h5>Wireframe for total project</h5>
+                            <p>Still in-progress, here is a plan of the final application.</p>
+                        </div>
+                    </div>
+                    <div class="banner-img carousel-item text-center">
+                        <img src="~/static/paw_print_dashboard.png" alt="Project Feature" height="500px" width="auto">
+                        <div class="caption carousel-caption d-none d-md-block ">
+                            <h5>Client Dashboard</h5>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carousel_3" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel_3" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal popup" id="popup4">
+    <div class="modal-content popup-content">
+        <div class="close-box">
+            <a data-dismiss="modal" class="popup-close">&times;</a>
+        </div>
+        <div class="project-details__box">
+            <div id="carousel_4" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel_4" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel_4" data-slide-to="1"></li>
+                    <li data-target="#carousel_4" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner mb-6">
+                    <div class="banner-img carousel-item text-center active">
+                        <img src="~/static/team_connect_dashboard.png" alt="Project Feature" height="500px" width="auto">
+                        <div class="caption carousel-caption d-none d-md-block">
+                            <h5>Team Member Dashboard</h5>
+                            <p>Bootstrap enables pagination of messages. Styling will be updated and more features will be included.</p>
+                        </div>
+                    </div>
+                    <div class="banner-img carousel-item text-center">
+                        <img src="~/static/team_connect_kanban_board.png" alt="Project Feature" height="500px" width="auto">
+                        <div class="caption carousel-caption d-none d-md-block">
+                            <h5>Project Details Page</h5>
+                            <p>Kanban board will rely on jQuery functionality to give team member the ability to click and drag taskers from one
+                                column to the next.</p>
+                        </div>
+                    </div>
+                    <div class="banner-img carousel-item text-center">
+                        <img src="~/static/team_connect_admin.png" alt="Project Feature" height="500px" width="auto">
+                        <div class="caption carousel-caption d-none d-md-block ">
+                            <h5>Admin Control</h5>
+                            <p>Only accessible to members added as admin gives them control over team accounts.</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carousel_4" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel_4" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 
